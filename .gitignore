@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.user
+*.userprefs
+
+# Unity-generated when opened in a test project
+Library/
+Temp/
+Obj/
+Build/
+Logs/
+UserSettings/
+
+# Test project artifacts (if you embed package locally)
+*.unitypackage

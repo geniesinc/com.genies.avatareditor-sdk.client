@@ -1,0 +1,13 @@
+{
+  "name": "com.genies.avatareditor-sdk.client",
+  "displayName": "Genies Avatar Editor SDK",
+  "version": "5.2.12",
+  "unity": "2022.3",
+  "unityRelease": "32f1",
+  "description": "The Avatar Editor can be used to customize your existing avatar and create new ones.",
+  "samples": [],
+  "dependencies": {
+    "com.genies.avatar-sdk.client": "3.0.1",
+    "com.unity.cinemachine": "3.1.5"
+  }
+}
