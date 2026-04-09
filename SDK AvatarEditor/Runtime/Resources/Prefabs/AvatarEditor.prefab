@@ -225,17 +225,17 @@ PrefabInstance:
     - target: {fileID: 3674144094369583795, guid: 898c9660400da449f875fd28701c0e62,
         type: 3}
       propertyPath: m_CellSize.x
-      value: -12.571428
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 3674144094369583795, guid: 898c9660400da449f875fd28701c0e62,
         type: 3}
       propertyPath: m_CellSize.y
-      value: -12.571428
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 3674144094369583795, guid: 898c9660400da449f875fd28701c0e62,
         type: 3}
       propertyPath: m_ConstraintCount
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3857362274239177984, guid: 898c9660400da449f875fd28701c0e62,
         type: 3}

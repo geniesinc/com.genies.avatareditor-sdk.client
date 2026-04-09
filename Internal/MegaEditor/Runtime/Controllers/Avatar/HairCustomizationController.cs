@@ -4,6 +4,7 @@ using Genies.Avatars.Behaviors;
 using Genies.Customization.Framework;
 using Genies.Inventory.UIData;
 using Genies.Looks.Customization.Commands;
+using Genies.Models;
 using Genies.Naf;
 using Genies.PerformanceMonitoring;
 using Genies.Refs;
@@ -27,9 +28,11 @@ namespace Genies.Customization.MegaEditor
     {
         private HairColorService _HairColorService => this.GetService<HairColorService>();
 
+        [SerializeField]
         public HairItemPickerDataSource hairItemDataSource;
 
-        public HairColorItemPickerDataSource hairColorDataSource;
+        [SerializeField]
+        public AvatarFeatureColorItemPickerDataSource hairColorDataSource;
 
         /// <summary>
         /// The focus camera to activate and set as active on this customization controller.
@@ -52,7 +55,6 @@ namespace Genies.Customization.MegaEditor
             }
 
             hairColorDataSource.Initialize(_customizer);
-
 
             return UniTask.FromResult(true);
         }
@@ -172,7 +174,7 @@ namespace Genies.Customization.MegaEditor
             // Trigger the animation of closing the edit and delete button and forget.
             _customizer.View.EditOrDeleteController.DisableAndDeactivateButtons().Forget();
 
-            // For avatar skin color change, equip the next color available in the UI list.
+            // For hair color change, equip the next color available in the UI list.
             // Currently we should have the preset ones always available (since they are non-editable), so next will always be available.
             // In the future, we might want to make the preset ones editable, in which case if next is not available, equip the previous one.
             // If previous is not available (that means we only have one in the list before deleting), set to the default.
@@ -187,12 +189,20 @@ namespace Genies.Customization.MegaEditor
             {
                 var hairColor = await _HairColorService.CustomColorDataAsync(correctId);
 
-                var newColors = new GenieColorEntry[]
+                var newColors = (hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?
+                    new GenieColorEntry[]
                 {
                     new (GenieColor.HairBase, hairColor.ColorBase),
                     new (GenieColor.HairR,    hairColor.ColorR),
                     new (GenieColor.HairG,    hairColor.ColorG),
                     new (GenieColor.HairB,    hairColor.ColorB),
+                } :
+                new GenieColorEntry[]
+                {
+                    new (GenieColor.FacialhairBase, hairColor.ColorBase),
+                    new (GenieColor.FacialhairR,    hairColor.ColorR),
+                    new (GenieColor.FacialhairG,    hairColor.ColorG),
+                    new (GenieColor.FacialhairB,    hairColor.ColorB),
                 };
 
                 ICommand command = new SetNativeAvatarColorsCommand(newColors, CurrentCustomizableAvatar);
@@ -200,8 +210,10 @@ namespace Genies.Customization.MegaEditor
             }
             else
             {
-                var colors = HairColorItemPickerDataSource.SafeGetColorsArray(nextUiDataRef.Item);
-                var entries = HairColorItemPickerDataSource.MapToHairColors(colors);
+                var colors = AvatarFeatureColorItemPickerDataSource.SafeGetColorsArray(nextUiDataRef.Item);
+                var entries = (hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?
+                    AvatarFeatureColorItemPickerDataSource.MapToHairColors(colors):
+                    AvatarFeatureColorItemPickerDataSource.MapToFacialHairColors(colors);
 
                 ICommand command = new SetNativeAvatarColorsCommand(entries, CurrentCustomizableAvatar);
                 await command.ExecuteAsync();

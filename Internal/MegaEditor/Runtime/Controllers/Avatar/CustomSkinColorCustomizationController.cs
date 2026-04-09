@@ -92,6 +92,7 @@ namespace Genies.Customization.MegaEditor
                 case CustomColorViewState.Edit:
                     _editedData = dataSource.CurrentSkinColorData;
                     _editedData.BaseColor = _CurrentEditingSkinColor;
+                    _editedData.Id = dataSource.CurrentSkinColorData.Id;
                     break;
 
                 case CustomColorViewState.CreateNew:

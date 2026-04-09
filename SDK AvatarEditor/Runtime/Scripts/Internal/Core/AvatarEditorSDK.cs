@@ -1,10 +1,9 @@
 using System;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
-using Genies.Avatars.Customization;
+using Genies.Avatars.Sdk;
 using Genies.CrashReporting;
 using Genies.ServiceManagement;
-using Genies.Avatars.Sdk;
 
 namespace Genies.Sdk.AvatarEditor.Core
 {
@@ -14,92 +13,97 @@ namespace Genies.Sdk.AvatarEditor.Core
     /// - Provides public static methods for opening/closing the editor and configuring save behavior
     /// - Customization APIs (equip, color, body, save/load) are in AvatarCustomizationSDK
     /// </summary>
+#if GENIES_SDK && !GENIES_INTERNAL
     internal static class AvatarEditorSDK
+#else
+    public static class AvatarEditorSDK
+#endif
     {
-        public static bool IsInitialized =>
-            InitializationCompletionSource is not null
-            && InitializationCompletionSource.Task.Status == UniTaskStatus.Succeeded;
-        private static UniTaskCompletionSource InitializationCompletionSource { get; set; }
-
-        private static IAvatarEditorSdkService CachedService { get; set; }
-        private static bool EventsSubscribed { get; set; }
+        /// <summary>
+        /// Event raised when the Avatar Editor SDK is initialized successfully.
+        /// </summary>
+        internal static event Action AvatarEditorSdkInitialized = delegate { };
 
         /// <summary>
         /// Event raised when the editor is opened.
         /// </summary>
-        public static event Action EditorOpened = delegate { };
+        internal static event Action EditorOpened = delegate { };
 
         /// <summary>
         /// Event raised when the editor is closed.
         /// </summary>
-        public static event Action EditorClosed = delegate { };
+        internal static event Action EditorClosed = delegate { };
 
         /// <summary>
         /// Event raised when the editor save option is changed.
         /// </summary>
-        public static event Action EditorSaveOptionSet = delegate { };
+        internal static event Action EditorSaveOptionSet = delegate { };
 
         /// <summary>
         /// Event raised when editor save settings are changed.
         /// </summary>
-        public static event Action EditorSaveSettingsSet = delegate { };
+        internal static event Action EditorSaveSettingsSet = delegate { };
 
         #region Initialization / Service Access
 
+        private static UniTaskCompletionSource<bool> InitializationSource;
+        private static bool Initialized;
+
+        public static bool IsInitialized => Initialized;
+
         public static async UniTask<bool> InitializeAsync()
         {
-            if (await AvatarCustomizationSDK.InitializeAsync())
+            if (InitializationSource != null)
             {
-                var avatarEditorSdkInstaller = new AvatarEditorSdkInstaller();
-                avatarEditorSdkInstaller.Register();
-                return true;
+                return await InitializationSource.Task.Preserve();
             }
 
-            CrashReporter.LogError("Error initializing avatar editor SDK");
-            return false;
+            InitializationSource = new UniTaskCompletionSource<bool>();
+
+            PerformInitializationAsync().Forget();
+            var status = await InitializationSource.Task.Preserve();
+
+            AvatarEditorSdkInitialized?.Invoke();
+            return status;
         }
 
-        internal static async UniTask<IAvatarEditorSdkService> GetOrCreateAvatarEditorSdkInstance()
+        private static async UniTask PerformInitializationAsync()
         {
-            if (await InitializeAsync() is false)
+            try
             {
-                CrashReporter.LogError("Avatar editor could not be initialized.");
-                return default;
+                if (await AvatarSdk.InitializeAsync() is false)
+                {
+                    CrashReporter.LogError("Error initializing avatar editor SDK");
+                    InitializationSource?.TrySetResult(false);
+                    InitializationSource = null;
+                    return;
+                }
+
+                new AvatarEditorSdkInstaller().Register();
+
+                var service = ServiceManager.Get<IAvatarEditorSdkService>();
+                if (service != null)
+                {
+                    service.EditorOpened += () => EditorOpened?.Invoke();
+                    service.EditorClosed += () => EditorClosed?.Invoke();
+                }
+
+                Initialized = true;
+                InitializationSource?.TrySetResult(true);
             }
-
-            var service = ServiceManager.Get<IAvatarEditorSdkService>();
-            SubscribeToServiceEvents(service);
-            return service;
-        }
-
-        private static void SubscribeToServiceEvents(IAvatarEditorSdkService service)
-        {
-            if (service == null)
+            catch (Exception ex)
             {
-                return;
+                CrashReporter.LogError($"Failed to initialize avatar editor SDK: {ex.Message}");
+                InitializationSource?.TrySetResult(false);
+                InitializationSource = null;
             }
-
-            if (ReferenceEquals(service, CachedService)
-                && EventsSubscribed)
-            {
-                return;
-            }
-
-            CachedService = service;
-            CachedService.EditorOpened += OnEditorOpened;
-            CachedService.EditorClosed += OnEditorClosed;
-
-            EventsSubscribed = true;
         }
 
-        private static void OnEditorOpened()
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
         {
-            EditorOpened?.Invoke();
-        }
-
-        private static void OnEditorClosed()
-        {
-            EditorClosed?.Invoke();
+            InitializationSource = null;
+            Initialized = false;
         }
 
         #endregion
@@ -115,7 +119,7 @@ namespace Genies.Sdk.AvatarEditor.Core
                     throw new InvalidOperationException("Failed to initialize AvatarEditorSDK");
                 }
 
-                var avatarEditorSdkService = await GetOrCreateAvatarEditorSdkInstance();
+                var avatarEditorSdkService = ServiceManager.Get<IAvatarEditorSdkService>();
                 await avatarEditorSdkService.OpenEditorAsync(avatar, camera);
             }
             catch (Exception ex)
@@ -133,7 +137,7 @@ namespace Genies.Sdk.AvatarEditor.Core
                     throw new InvalidOperationException("Failed to initialize AvatarEditorSDK");
                 }
 
-                var avatarEditorSdkService = await GetOrCreateAvatarEditorSdkInstance();
+                var avatarEditorSdkService = ServiceManager.Get<IAvatarEditorSdkService>();
                 await avatarEditorSdkService.CloseEditorAsync(revertAvatar);
             }
             catch (Exception ex)

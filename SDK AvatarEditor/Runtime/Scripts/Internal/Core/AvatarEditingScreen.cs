@@ -14,7 +14,11 @@ using Genies.VirtualCamera;
 
 namespace Genies.Sdk.AvatarEditor.Core
 {
+#if GENIES_SDK && !GENIES_INTERNAL
     internal enum AvatarSaveOption
+#else
+    public enum AvatarSaveOption
+#endif
     {
         SaveLocallyAndContinue,
         SaveLocallyAndExit,
@@ -23,7 +27,11 @@ namespace Genies.Sdk.AvatarEditor.Core
     }
 
     [Serializable]
+#if GENIES_SDK && !GENIES_INTERNAL
     internal struct AvatarSaveSettings
+#else
+    public struct AvatarSaveSettings
+#endif
     {
         public AvatarSaveOption SaveOption;
         public string ProfileId;

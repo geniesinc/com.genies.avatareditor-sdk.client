@@ -15,6 +15,8 @@ using Genies.ServiceManagement;
 using Genies.VirtualCamera;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using Object = UnityEngine.Object;
 
 namespace Genies.Sdk.AvatarEditor.Core
@@ -98,6 +100,7 @@ namespace Genies.Sdk.AvatarEditor.Core
                     }
                 }
 
+                EnsureEventSystemExists();
                 PreloadSpecificAssetData();
 
                 if (_avatarEditorInstance != null)
@@ -281,6 +284,20 @@ namespace Genies.Sdk.AvatarEditor.Core
         }
 
         #region Helpers
+
+        /// <summary>
+        /// Ensures an EventSystem exists in the scene with the new Input System module.
+        /// The avatar editor UI requires an EventSystem with InputSystemUIInputModule to function.
+        /// </summary>
+        private static void EnsureEventSystemExists()
+        {
+            if (EventSystem.current != null)
+            {
+                return;
+            }
+
+            new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
+        }
 
         /// <summary>
         /// Calls some endpoints from inventory to begin fetching data early

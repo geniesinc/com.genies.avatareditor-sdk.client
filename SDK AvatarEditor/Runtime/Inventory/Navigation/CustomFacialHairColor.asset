@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734822663c04c4ae59600936d8962c53, type: 3}
+  m_Name: CustomFacialHairColor
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000, guid: 7a372fe3f972d48f6a02b96f027afac8, type: 2}
+  position: {x: 1048, y: 5624}
+  ports:
+    keys:
+    - customizationConfig
+    - editItemNode
+    - createItemNode
+    - childNodes
+    - customizationController
+    - secondaryEditItemNode
+    values:
+    - _fieldName: customizationConfig
+      _node: {fileID: 11400000}
+      _typeQualifiedName: Genies.Customization.Framework.CustomizationConfig, Genies.Customizer,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: editItemNode
+      _node: {fileID: 11400000}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: createItemNode
+      _node: {fileID: 11400000}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: childNodes
+      _node: {fileID: 11400000}
+      _typeQualifiedName: System.Collections.Generic.List`1[[Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: customizationController
+      _node: {fileID: 11400000}
+      _typeQualifiedName: Genies.Customization.Framework.BaseCustomizationController,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: editItemNode
+        node: {fileID: -3245782873548807996, guid: 7a372fe3f972d48f6a02b96f027afac8,
+          type: 2}
+        reroutePoints: []
+      - fieldName: createItemNode
+        node: {fileID: -3245782873548807996, guid: 7a372fe3f972d48f6a02b96f027afac8,
+          type: 2}
+        reroutePoints: []
+      - fieldName: editItemNode
+        node: {fileID: -7770079200153697892, guid: 7a372fe3f972d48f6a02b96f027afac8,
+          type: 2}
+        reroutePoints: []
+      - fieldName: createItemNode
+        node: {fileID: -7770079200153697892, guid: 7a372fe3f972d48f6a02b96f027afac8,
+          type: 2}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 11400000}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  isRootNode: 1
+  isStackable: 1
+  openFirstChildNodeAsDefault: 0
+  customizationConfig: {fileID: 11400000, guid: fcec049f898714977943a3ff04343ee9,
+    type: 2}
+  customizationController: {fileID: 11400000, guid: eaa2444a2d765401da0175fc88cb92c6,
+    type: 2}
+  defaultChildNodeToOpen: {fileID: 0}
+  editItemNode: {fileID: 0}
+  createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
+  childNodes: []

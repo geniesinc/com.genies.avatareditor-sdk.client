@@ -1,24 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
-using Genies.Looks.Customization.Commands;
-using static Genies.Customization.MegaEditor.CustomizationContext;
-using System;
 using Genies.Analytics;
-using System.Collections.Generic;
 using Genies.Avatars;
 using Genies.Avatars.Behaviors;
 using Genies.Avatars.Services;
-using Genies.Avatars.Services.Flair;
 using Genies.CameraSystem;
 using Genies.CrashReporting;
 using Genies.Customization.Framework;
 using Genies.Inventory.UIData;
+using Genies.Looks.Customization.Commands;
 using Genies.MegaEditor;
 using Genies.Models;
 using Genies.Naf;
 using Genies.ServiceManagement;
 using Genies.UIFramework.Widgets;
+using UnityEngine;
+using static Genies.Customization.MegaEditor.CustomizationContext;
 
 namespace Genies.Customization.MegaEditor
 {
@@ -36,23 +36,34 @@ namespace Genies.Customization.MegaEditor
         private CustomizeColorView _customizeColorViewInstance;
 
         [SerializeField]
-        public FlairColorItemPickerDataSource flairColorDataSource;
+        public AvatarFeatureColorItemPickerDataSource flairColorDataSource;
 
         /// <summary>
         /// The focus camera to activate and set as active on this customization controller.
         /// </summary>
         public GeniesVirtualCameraCatalog virtualCamera;
 
-        private PictureInPictureController _PictureInPictureController => this.GetService<PictureInPictureController>();
-        private IFlairCustomColorPresetService _FlairCustomColorPresetService => this.GetService<IFlairCustomColorPresetService>();
-        private IAvatarService _AvatarService => this.GetService<IAvatarService>();
+        [NonSerialized] private PictureInPictureController _pictureInPictureController;
 
-        private VirtualCameraController<GeniesVirtualCameraCatalog> _VirtualCameraController => this.GetService<VirtualCameraController<GeniesVirtualCameraCatalog>>();
+        private PictureInPictureController PictureInPictureController
+        {
+            get
+            {
+                if (_pictureInPictureController == null || _pictureInPictureController.gameObject == null)
+                {
+                    _pictureInPictureController = ServiceManager.Get<PictureInPictureController>();
+                }
 
-        private readonly Dictionary<string,FlairColorPreset> _newCustomPreset = new Dictionary<string, FlairColorPreset>();
+                return _pictureInPictureController;
+            }
+        }
 
-        private string _FlairMaterialSlot => string.Empty;
+        private VirtualCameraController<GeniesVirtualCameraCatalog> VirtualCameraController =>
+            ServiceManager.Get<VirtualCameraController<GeniesVirtualCameraCatalog>>();
+
+        private FlairColorPreset _workingPreset;
         private GradientColorUiData _previousPreset;
+        private Color[] _originalFlairColors;
 
         public override async UniTask<bool> TryToInitialize(Customizer customizer)
         {
@@ -64,76 +75,61 @@ namespace Genies.Customization.MegaEditor
                     CustomizerViewLayer.CustomizationEditorFullScreen, _prefab);
             }
 
+            flairColorDataSource.Initialize(_customizer);
+
             return await UniTask.FromResult(true);
         }
 
         public override void StartCustomization()
         {
-            _VirtualCameraController.ActivateVirtualCamera(virtualCamera).Forget();
-            _PictureInPictureController.canBeDisabled = false;
-            _PictureInPictureController.Enable();
-            _VirtualCameraController.SetFullScreenModeInFocusCameras(true);
+            VirtualCameraController.ActivateVirtualCamera(virtualCamera).Forget();
+            PictureInPictureController.canBeDisabled = false;
+            PictureInPictureController.Enable();
+            VirtualCameraController.SetFullScreenModeInFocusCameras(true);
 
-             //custom colors initialization
-            // Initialize the customize color view based on a preset if exist
+            flairColorDataSource.StartCustomization();
+
             _previousPreset = flairColorDataSource.CurrentLongPressColorData;
-            FlairColorPreset presetMetadata = null;
 
             if (_previousPreset != null)
             {
                 switch (CurrentCustomColorViewState)
                 {
                     case CustomColorViewState.CreateNew:
-                        //generate a new instance of the asset based on the last one selected
-                        presetMetadata = NewCustomColorFromPreset(_previousPreset);
-
+                        _workingPreset = NewCustomColorFromPreset(_previousPreset);
                         break;
                     case CustomColorViewState.Edit:
-                        //edit the current instance of the asset based on the last one selected
-                        presetMetadata = EditCustomColorFromPreset(_previousPreset);
+                        _workingPreset = EditCustomColorFromPreset(_previousPreset);
                         break;
                     default:
                         CrashReporter.LogError($"Invalid State to access the flair color pick {CurrentCustomColorViewState}");
+                        _workingPreset = NewCustomColorFromPreset(_previousPreset);
                         break;
                 }
-
-                _newCustomPreset.Add(flairColorDataSource.FlairAssetType.ToString(), presetMetadata);
+                _originalFlairColors = (Color[])_workingPreset.Colors.Clone();
             }
             else
             {
-                //generate a new instance of the asset based on the last one selected
-                presetMetadata = new FlairColorPreset()
+                _workingPreset = new FlairColorPreset
                 {
-                    Guid = System.Guid.NewGuid().ToString(),
-                    Colors = new []
-                    {
-                        Color.black,
-                        Color.black,
-                        Color.black,
-                        Color.black,
-                    },
+                    Guid = Guid.NewGuid().ToString(),
+                    Colors = new[] { Color.black, Color.black, Color.black, Color.black },
                 };
-
-                _newCustomPreset.Add(flairColorDataSource.FlairAssetType.ToString(), presetMetadata);
+                _originalFlairColors = null;
             }
 
             var props = new AnalyticProperties();
-            if(presetMetadata != null && !string.IsNullOrEmpty(presetMetadata.Guid))
+            if (_workingPreset != null && !string.IsNullOrEmpty(_workingPreset.Guid))
             {
-                props.AddProperty("selectedColor", $"{presetMetadata.Guid}");
+                props.AddProperty("selectedColor", _workingPreset.Guid);
             }
 
-            AnalyticsReporter.LogEvent(FlairCustomizationController.AnalyticsEventsPerFlairType[flairColorDataSource.FlairAssetType][FlairCustomizationController.AnalyticsActionType.ColorPickerSelected], props);
-            //provide only 2 channels
-            Color[] initialColors = new[]
-            {
-                presetMetadata.Colors[0],
-                presetMetadata.Colors[1],
-            };
+            AnalyticsReporter.LogEvent(
+                FlairItemPickerDataSource.AnalyticsEventsPerFlairType[flairColorDataSource.FlairAssetType][FlairItemPickerDataSource.AnalyticsActionType.ColorPickerSelected],
+                props);
 
+            Color[] initialColors = new[] { _workingPreset.Colors[0], _workingPreset.Colors[1] };
             _customizeColorViewInstance.Initialize(initialColors);
-
-            // Add listener to the color picker color change event for regions
             _customizeColorViewInstance.OnColorSelected.AddListener(UpdateFlairColor);
         }
 
@@ -144,35 +140,29 @@ namespace Genies.Customization.MegaEditor
         private void UpdateFlairColor(Color color)
         {
             var indexSelected = _customizeColorViewInstance.ColorRegionsView.SelectedRegionIndex;
-            FlairColorPreset flairColorPreset = _newCustomPreset[flairColorDataSource.FlairAssetType.ToString()];
+            _workingPreset.Colors[indexSelected] = color;
 
-            //swipe the current color selected
-            flairColorPreset.Colors[indexSelected] = color;
-
-            //apply the color directly without a commmand
             switch (flairColorDataSource.FlairAssetType)
             {
                 case FlairAssetType.Eyebrows:
                     var colors = new GenieColorEntry[]
                     {
-                        new (GenieColor.EyebrowsBase, flairColorPreset.Colors[0]),
-                        new (GenieColor.EyebrowsR,    flairColorPreset.Colors[1]),
-                        new (GenieColor.EyebrowsG,    flairColorPreset.Colors[2]),
-                        new (GenieColor.EyebrowsB,    flairColorPreset.Colors[3]),
+                        new(GenieColor.EyebrowsBase, _workingPreset.Colors[0]),
+                        new(GenieColor.EyebrowsR, _workingPreset.Colors[1]),
+                        new(GenieColor.EyebrowsG, _workingPreset.Colors[2]),
+                        new(GenieColor.EyebrowsB, _workingPreset.Colors[3]),
                     };
-
                     CurrentCustomizableAvatar.SetColorsAsync(colors).Forget();
                     break;
 
                 case FlairAssetType.Eyelashes:
                     colors = new GenieColorEntry[]
                     {
-                        new (GenieColor.EyelashesBase, flairColorPreset.Colors[0]),
-                        new (GenieColor.EyelashesR,    flairColorPreset.Colors[1]),
-                        new (GenieColor.EyelashesG,    flairColorPreset.Colors[2]),
-                        new (GenieColor.EyelashesB,    flairColorPreset.Colors[3]),
+                        new(GenieColor.EyelashesBase, _workingPreset.Colors[0]),
+                        new(GenieColor.EyelashesR, _workingPreset.Colors[1]),
+                        new(GenieColor.EyelashesG, _workingPreset.Colors[2]),
+                        new(GenieColor.EyelashesB, _workingPreset.Colors[3]),
                     };
-
                     CurrentCustomizableAvatar.SetColorsAsync(colors).Forget();
                     break;
 
@@ -183,15 +173,14 @@ namespace Genies.Customization.MegaEditor
 
         public override void StopCustomization()
         {
-            // Remove the color change listener to prevent memory leaks
             _customizeColorViewInstance.OnColorSelected.RemoveListener(UpdateFlairColor);
 
-            _newCustomPreset.Clear();
-            _PictureInPictureController.canBeDisabled = true;
-            _PictureInPictureController.Disable();
-            _VirtualCameraController.SetFullScreenModeInFocusCameras(false);
+            PictureInPictureController.canBeDisabled = true;
+            PictureInPictureController.Disable();
+            VirtualCameraController.SetFullScreenModeInFocusCameras(false);
 
             CurrentCustomColorViewState = CustomColorViewState.Normal;
+            flairColorDataSource.StopCustomization();
             _customizer.View.SecondaryItemPicker.Hide();
         }
 
@@ -210,39 +199,40 @@ namespace Genies.Customization.MegaEditor
 
             try
             {
-               FlairColorPreset flairColorPreset = _newCustomPreset[flairColorDataSource.FlairAssetType.ToString()];
-               Naf.AvatarDefinition avatarDefinition = await _AvatarService.GetAvatarDefinitionAsync();
+                var colorType = flairColorDataSource.FlairAssetType switch
+                {
+                    FlairAssetType.Eyebrows => IColorType.Eyebrow,
+                    FlairAssetType.Eyelashes => IColorType.Eyelash,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
 
-               FlairColorPreset customSavedPreset = await _FlairCustomColorPresetService.SaveOrCreateCustomPreset(
-                   flairColorDataSource.FlairAssetType.ToString(),
-                   avatarDefinition,
-                   flairColorPreset.Id,
-                   flairColorPreset.Colors);
+                var newColors = new List<Color> { _workingPreset.Colors[0], _workingPreset.Colors[1], _workingPreset.Colors[2], _workingPreset.Colors[3] };
 
-               if (customSavedPreset != null)
-               {
-                   //set the custom color
-                   var colors = FlairColorItemPickerDataSource.MapToFlairColors(customSavedPreset.Colors, flairColorDataSource.FlairAssetType);
-                   ICommand command = new SetNativeAvatarColorsCommand(colors, CurrentCustomizableAvatar);
-                   await command.ExecuteAsync(new CancellationTokenSource().Token);
+                if (!string.IsNullOrEmpty(_workingPreset.Id) && (await GetAllCustomFlairIdsAsync(colorType)).Contains(_workingPreset.Id))
+                {
+                    await flairColorDataSource.UserColorSource.UpdateUserColorAsync(_workingPreset.Id, newColors);
+                }
+                else
+                {
+                    await flairColorDataSource.UserColorSource.CreateUserColorAsync(colorType, newColors);
+                }
 
-               //refresh the data provider to show newly created custom colors
-               flairColorDataSource.Dispose();
-               await flairColorDataSource.InitializeAndGetCountAsync(null, new());
+                flairColorDataSource.Dispose();
+                await flairColorDataSource.InitializeAndGetCountAsync(null, new());
 
-               }
-               else
-               {
-                  CrashReporter.LogError($"Failed to save a custom color on avatar definition");
-               }
-
-               return true;
+                return true;
             }
             catch (Exception e)
             {
-                CrashReporter.Log($"CustomHairColorCustomizationController's OnSaveAsync with CurrentCustomColorViewState {CurrentCustomColorViewState} had an exception: {e}", LogSeverity.Error);
+                CrashReporter.Log($"CustomFlairColorCustomizationController's OnSaveAsync with CurrentCustomColorViewState {CurrentCustomColorViewState} had an exception: {e}", LogSeverity.Error);
                 return true;
             }
+        }
+
+        private async UniTask<List<string>> GetAllCustomFlairIdsAsync(IColorType colorType)
+        {
+            var entries = await flairColorDataSource.UserColorSource.GetUserColorsAsync(colorType);
+            return entries != null ? entries.Where(e => !string.IsNullOrEmpty(e.Id)).Select(e => e.Id).ToList() : new List<string>();
         }
 
         public override bool HasDiscardAction()
@@ -252,41 +242,31 @@ namespace Genies.Customization.MegaEditor
 
         public override UniTask<bool> OnDiscardAsync()
         {
-            //Discard the changes and apply the last preset only if we have a selected one
-            if(_previousPreset != null)
+            if (_originalFlairColors != null && _originalFlairColors.Length >= 4)
             {
-                UpdateFlairColorUsingCommand(_previousPreset);
+                var colors = AvatarFeatureColorItemPickerDataSource.MapToFlairColors(_originalFlairColors, flairColorDataSource.FlairAssetType);
+                var command = new SetNativeAvatarColorsCommand(colors, CurrentCustomizableAvatar);
+                command.ExecuteAsync(new CancellationTokenSource().Token);
             }
 
+            flairColorDataSource.Dispose();
             return UniTask.FromResult(true);
-        }
-
-        private void UpdateFlairColorUsingCommand(GradientColorUiData colorData)
-        {
-            var colorArray = FlairColorItemPickerDataSource.SafeGetColorsArray(colorData);
-            var colors = FlairColorItemPickerDataSource.MapToFlairColors(colorArray, flairColorDataSource.FlairAssetType);
-
-            ICommand command = new SetNativeAvatarColorsCommand(colors, CurrentCustomizableAvatar);
-            command.ExecuteAsync(new CancellationTokenSource().Token);
         }
 
         public override void Dispose()
         {
+            base.Dispose();
             _customizeColorViewInstance.Dispose();
         }
 
         private FlairColorPreset EditCustomColorFromPreset(GradientColorUiData uiData)
         {
-            var colors = FlairColorItemPickerDataSource.SafeGetColorsArray(uiData);
+            var colors = AvatarFeatureColorItemPickerDataSource.SafeGetColorsArray(uiData);
             var copyColors = new Color[colors.Length];
             Array.Copy(colors, copyColors, colors.Length);
-
-            var id = uiData.AssetId.Replace(
-                $"{IFlairCustomColorPresetService.ChanelPrefixByType[flairColorDataSource.FlairAssetType.ToString()]}-", "");
-
-            return new FlairColorPreset()
+            return new FlairColorPreset
             {
-                Id = id,
+                Id = uiData.AssetId,
                 Guid = uiData.AssetId,
                 Colors = copyColors,
             };
@@ -294,17 +274,14 @@ namespace Genies.Customization.MegaEditor
 
         private FlairColorPreset NewCustomColorFromPreset(GradientColorUiData uiData)
         {
-            var colors = FlairColorItemPickerDataSource.SafeGetColorsArray(uiData);
+            var colors = AvatarFeatureColorItemPickerDataSource.SafeGetColorsArray(uiData);
             var copyColors = new Color[colors.Length];
             Array.Copy(colors, copyColors, colors.Length);
-
-            var _guid = Guid.NewGuid().ToString();
-            var _customGuid =  $"{flairColorDataSource.FlairAssetType.ToString()}-{_guid}";
-
-            return new FlairColorPreset()
+            var guid = Guid.NewGuid().ToString();
+            return new FlairColorPreset
             {
-                Id = _guid,
-                Guid = _customGuid,
+                Id = guid,
+                Guid = $"{flairColorDataSource.FlairAssetType}-{guid}",
                 Colors = copyColors,
             };
         }

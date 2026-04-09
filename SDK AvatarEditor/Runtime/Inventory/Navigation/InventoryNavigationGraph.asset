@@ -21,6 +21,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -9076626564838765630}
@@ -71,6 +72,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -9076626564838765630}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -81,6 +91,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-8675153096485634227
 MonoBehaviour:
@@ -103,6 +114,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -8675153096485634227}
@@ -177,6 +189,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -8675153096485634227}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 1
@@ -187,6 +208,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: -8370152189585558111}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: -8370152189585558111}
   - {fileID: -7177627715027074549}
@@ -215,6 +237,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -8370152189585558111}
@@ -271,6 +294,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -8370152189585558111}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -281,6 +313,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-8335306392173872083
 MonoBehaviour:
@@ -303,6 +336,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -8335306392173872083}
@@ -362,6 +396,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -8335306392173872083}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -372,6 +415,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: -5083831119931692969}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-8117879168978215224
 MonoBehaviour:
@@ -394,6 +438,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -8117879168978215224}
@@ -444,6 +489,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -8117879168978215224}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -454,6 +508,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-7770079200153697892
 MonoBehaviour:
@@ -476,6 +531,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -7770079200153697892}
@@ -490,7 +546,10 @@ MonoBehaviour:
       _node: {fileID: -7770079200153697892}
       _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
         Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: customizationController
+        node: {fileID: 11400000, guid: a2368bfffbf8e462f909635d81e6a2b2, type: 2}
+        reroutePoints: []
       _direction: 1
       _connectionType: 1
       _typeConstraint: 0
@@ -499,7 +558,10 @@ MonoBehaviour:
       _node: {fileID: -7770079200153697892}
       _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
         Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: customizationController
+        node: {fileID: 11400000, guid: a2368bfffbf8e462f909635d81e6a2b2, type: 2}
+        reroutePoints: []
       _direction: 1
       _connectionType: 1
       _typeConstraint: 0
@@ -526,16 +588,26 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -7770079200153697892}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
   customizationConfig: {fileID: 11400000, guid: 42c6d569ab91644a0937247bf543548a,
     type: 2}
-  customizationController: {fileID: 11400000, guid: 238126cc4081a4b61b28d5804f1931f1,
+  customizationController: {fileID: 11400000, guid: d4d05261843d74b378c996d9ffd1fb2f,
     type: 2}
   defaultChildNodeToOpen: {fileID: 0}
-  editItemNode: {fileID: 0}
-  createItemNode: {fileID: 0}
+  editItemNode: {fileID: 11400000, guid: a2368bfffbf8e462f909635d81e6a2b2, type: 2}
+  createItemNode: {fileID: 11400000, guid: a2368bfffbf8e462f909635d81e6a2b2, type: 2}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-7177627715027074549
 MonoBehaviour:
@@ -558,6 +630,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -7177627715027074549}
@@ -614,6 +687,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -7177627715027074549}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -624,6 +706,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: -5200878371655178473}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-7054436101699878897
 MonoBehaviour:
@@ -646,6 +729,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -7054436101699878897}
@@ -717,6 +801,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -7054436101699878897}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -727,6 +820,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: -8335306392173872083}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: -8335306392173872083}
   - {fileID: 8881899239048837533}
@@ -755,6 +849,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -7009017556374386378}
@@ -805,6 +900,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -7009017556374386378}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -815,6 +919,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-6970050194878511613
 MonoBehaviour:
@@ -829,7 +934,7 @@ MonoBehaviour:
   m_Name: FacialHairColorPresets
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1192, y: 5624}
+  position: {x: 1336, y: 5672}
   ports:
     keys:
     - customizationConfig
@@ -837,6 +942,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -6970050194878511613}
@@ -884,6 +990,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -6970050194878511613}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -894,6 +1009,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-6918059803031238074
 MonoBehaviour:
@@ -916,6 +1032,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -6918059803031238074}
@@ -965,8 +1082,23 @@ MonoBehaviour:
       - fieldName: editItemNode
         node: {fileID: 6155608534709464201}
         reroutePoints: []
+      - fieldName: createItemNode
+        node: {fileID: 8704813406134243878}
+        reroutePoints: []
+      - fieldName: secondaryEditItemNode
+        node: {fileID: 8704813406134243878}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -6918059803031238074}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
   isRootNode: 1
@@ -979,6 +1111,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-6616173290600829907
 MonoBehaviour:
@@ -1001,6 +1134,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -6616173290600829907}
@@ -1051,6 +1185,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -6616173290600829907}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 1
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -1061,6 +1204,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-6144293563881817047
 MonoBehaviour:
@@ -1083,6 +1227,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -6144293563881817047}
@@ -1133,6 +1278,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -6144293563881817047}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -1143,6 +1297,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-5850264229715970197
 MonoBehaviour:
@@ -1165,6 +1320,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -5850264229715970197}
@@ -1221,6 +1377,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -5850264229715970197}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -1231,6 +1396,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-5840244503114574216
 MonoBehaviour:
@@ -1253,6 +1419,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -5840244503114574216}
@@ -1306,6 +1473,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -5840244503114574216}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -1316,6 +1492,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: -3874685596621967585}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-5696890917941780920
 MonoBehaviour:
@@ -1338,6 +1515,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -5696890917941780920}
@@ -1391,6 +1569,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -5696890917941780920}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -1400,6 +1587,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-5644522126849008288
 MonoBehaviour:
@@ -1422,6 +1610,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -5644522126849008288}
@@ -1472,6 +1661,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -5644522126849008288}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -1482,6 +1680,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-5458664748895097794
 MonoBehaviour:
@@ -1563,6 +1762,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -5200878371655178473}
@@ -1616,6 +1816,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -5200878371655178473}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -1626,6 +1835,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-5083831119931692969
 MonoBehaviour:
@@ -1648,6 +1858,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -5083831119931692969}
@@ -1728,6 +1939,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -5083831119931692969}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -1738,6 +1958,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: -350669952695805109}
   - {fileID: 3294287654174500253}
@@ -1765,6 +1986,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -4820679839009092513}
@@ -1815,6 +2037,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -4820679839009092513}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -1825,6 +2056,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-4677941132796881137
 MonoBehaviour:
@@ -1847,6 +2079,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -4677941132796881137}
@@ -1897,6 +2130,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -4677941132796881137}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 1
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -1906,6 +2148,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-4428346956033707231
 MonoBehaviour:
@@ -1928,6 +2171,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -4428346956033707231}
@@ -1975,6 +2219,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -4428346956033707231}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -1985,6 +2238,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-3943257722560380420
 MonoBehaviour:
@@ -2007,6 +2261,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -3943257722560380420}
@@ -2057,6 +2312,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -3943257722560380420}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -2067,6 +2331,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-3916011713910763982
 MonoBehaviour:
@@ -2089,6 +2354,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -3916011713910763982}
@@ -2139,6 +2405,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -3916011713910763982}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -2149,6 +2424,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-3874685596621967585
 MonoBehaviour:
@@ -2171,6 +2447,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -3874685596621967585}
@@ -2221,6 +2498,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -3874685596621967585}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -2231,6 +2517,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-3848120874436352065
 MonoBehaviour:
@@ -2253,6 +2540,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -3848120874436352065}
@@ -2312,6 +2600,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -3848120874436352065}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 1
@@ -2322,6 +2619,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 6154586535992399588}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: 6154586535992399588}
   - {fileID: -5850264229715970197}
@@ -2347,6 +2645,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -3842905851648626025}
@@ -2397,6 +2696,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -3842905851648626025}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -2407,6 +2715,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-3627199012912878397
 MonoBehaviour:
@@ -2429,6 +2738,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -3627199012912878397}
@@ -2482,6 +2792,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -3627199012912878397}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -2492,6 +2811,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: -7009017556374386378}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-3437724383351228006
 MonoBehaviour:
@@ -2514,6 +2834,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -3437724383351228006}
@@ -2582,6 +2903,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -3437724383351228006}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 1
@@ -2592,6 +2922,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: -3627199012912878397}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: -3627199012912878397}
   - {fileID: -5840244503114574216}
@@ -2620,6 +2951,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -3245782873548807996}
@@ -2676,6 +3008,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -3245782873548807996}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -2686,6 +3027,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 544386004469659489}
   createItemNode: {fileID: 544386004469659489}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-2794024930592255077
 MonoBehaviour:
@@ -2708,6 +3050,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -2794024930592255077}
@@ -2758,6 +3101,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -2794024930592255077}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -2768,6 +3120,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-2648026100111812189
 MonoBehaviour:
@@ -2790,6 +3143,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -2648026100111812189}
@@ -2843,6 +3197,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -2648026100111812189}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -2853,6 +3216,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: -5083831119931692969}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-2311692737167922394
 MonoBehaviour:
@@ -2875,6 +3239,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -2311692737167922394}
@@ -2949,6 +3314,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -2311692737167922394}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -2959,6 +3333,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: 234069520306648509}
   - {fileID: 2191786348979268749}
@@ -2989,6 +3364,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -2173094784890890935}
@@ -3042,6 +3418,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -2173094784890890935}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -3051,6 +3436,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-1959400130338652267
 MonoBehaviour:
@@ -3073,6 +3459,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -1959400130338652267}
@@ -3126,6 +3513,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -1959400130338652267}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -3136,6 +3532,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 3673613581553857628}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-1852014658757430884
 MonoBehaviour:
@@ -3158,6 +3555,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -1852014658757430884}
@@ -3214,6 +3612,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -1852014658757430884}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -3224,6 +3631,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: -5083831119931692969}
   createItemNode: {fileID: -6616173290600829907}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-1521735085075388790
 MonoBehaviour:
@@ -3305,6 +3713,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -1425734469743183674}
@@ -3355,6 +3764,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -1425734469743183674}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -3365,6 +3783,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-1346710113089581216
 MonoBehaviour:
@@ -3387,6 +3806,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -1346710113089581216}
@@ -3443,6 +3863,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -1346710113089581216}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -3453,6 +3882,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-1104654785999698703
 MonoBehaviour:
@@ -3475,6 +3905,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -1104654785999698703}
@@ -3531,6 +3962,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -1104654785999698703}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -3540,6 +3980,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 3987911994695960583}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-467104363986744247
 MonoBehaviour:
@@ -3562,6 +4003,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -467104363986744247}
@@ -3612,6 +4054,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -467104363986744247}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -3622,6 +4073,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-350669952695805109
 MonoBehaviour:
@@ -3644,6 +4096,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -350669952695805109}
@@ -3694,6 +4147,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -350669952695805109}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -3704,6 +4166,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &-57567294857952732
 MonoBehaviour:
@@ -3726,6 +4189,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: -57567294857952732}
@@ -3776,6 +4240,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: -57567294857952732}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -3786,6 +4259,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -3884,6 +4358,7 @@ MonoBehaviour:
   - {fileID: -9076626564838765630}
   - {fileID: 8823101256967320203}
   - {fileID: 6827882545792692438}
+  - {fileID: 11400000, guid: a2368bfffbf8e462f909635d81e6a2b2, type: 2}
 --- !u!114 &87714531096098749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3903,6 +4378,7 @@ MonoBehaviour:
     - editItemNode
     - createItemNode
     - childNodes
+    - secondaryEditItemNode
     values:
     - _fieldName: editItemNode
       _node: {fileID: 87714531096098749}
@@ -3938,12 +4414,22 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 87714531096098749}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   customizationConfig: {fileID: 11400000, guid: ca8727f65e8f740f2bf177b21f00f5f5,
     type: 2}
   customizationController: {fileID: 11400000, guid: 335faaaec15ff48758e2eae18579f205,
     type: 2}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: -8675153096485634227}
   - {fileID: 1039368669573185082}
@@ -3968,6 +4454,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 234069520306648509}
@@ -4018,6 +4505,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 234069520306648509}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -4028,6 +4524,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &349401431627376012
 MonoBehaviour:
@@ -4050,6 +4547,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 349401431627376012}
@@ -4106,6 +4604,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 349401431627376012}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -4116,6 +4623,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &544386004469659489
 MonoBehaviour:
@@ -4130,7 +4638,7 @@ MonoBehaviour:
   m_Name: CustomHairColor
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1224, y: 5944}
+  position: {x: 1128, y: 5944}
   ports:
     keys:
     - customizationConfig
@@ -4138,6 +4646,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 544386004469659489}
@@ -4191,6 +4700,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 544386004469659489}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 1
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -4201,6 +4719,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &640184171615048732
 MonoBehaviour:
@@ -4223,6 +4742,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 640184171615048732}
@@ -4279,6 +4799,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 640184171615048732}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -4289,6 +4818,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &759295404673056633
 MonoBehaviour:
@@ -4311,6 +4841,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 759295404673056633}
@@ -4385,6 +4916,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 759295404673056633}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 1
@@ -4395,6 +4935,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: -6144293563881817047}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: -6144293563881817047}
   - {fileID: 7910436001514996981}
@@ -4425,6 +4966,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 1039368669573185082}
@@ -4493,6 +5035,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 1039368669573185082}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -4503,6 +5054,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 8704813406134243878}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: 8704813406134243878}
   - {fileID: -7054436101699878897}
@@ -4531,6 +5083,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 1511258047512336488}
@@ -4581,6 +5134,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 1511258047512336488}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -4591,6 +5153,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &1551449568072156053
 MonoBehaviour:
@@ -4613,6 +5176,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 1551449568072156053}
@@ -4666,6 +5230,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 1551449568072156053}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -4676,6 +5249,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8628811164209578363}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &2077137614535133905
 MonoBehaviour:
@@ -4698,6 +5272,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 2077137614535133905}
@@ -4760,6 +5335,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 2077137614535133905}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 1
@@ -4770,6 +5354,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 4511420531748345521}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: 4511420531748345521}
   - {fileID: -1346710113089581216}
@@ -4796,6 +5381,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 2191786348979268749}
@@ -4846,6 +5432,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 2191786348979268749}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -4856,6 +5451,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &2440552039439788521
 MonoBehaviour:
@@ -4878,6 +5474,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 2440552039439788521}
@@ -4925,6 +5522,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 2440552039439788521}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -4935,6 +5541,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &2472700773928970138
 MonoBehaviour:
@@ -4957,6 +5564,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 2472700773928970138}
@@ -5007,6 +5615,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 2472700773928970138}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -5016,6 +5633,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &2927015310013770731
 MonoBehaviour:
@@ -5038,6 +5656,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 2927015310013770731}
@@ -5094,6 +5713,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 2927015310013770731}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -5104,6 +5732,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: -5083831119931692969}
   createItemNode: {fileID: 4104213165487167876}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &2992074713195446611
 MonoBehaviour:
@@ -5126,6 +5755,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 2992074713195446611}
@@ -5182,6 +5812,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 2992074713195446611}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -5192,6 +5831,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &3294287654174500253
 MonoBehaviour:
@@ -5214,6 +5854,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 3294287654174500253}
@@ -5264,6 +5905,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 3294287654174500253}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -5274,6 +5924,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &3673613581553857628
 MonoBehaviour:
@@ -5296,6 +5947,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 3673613581553857628}
@@ -5346,6 +5998,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 3673613581553857628}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -5356,6 +6017,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &3987911994695960583
 MonoBehaviour:
@@ -5378,6 +6040,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 3987911994695960583}
@@ -5437,6 +6100,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 3987911994695960583}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -5446,6 +6118,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 6144752084185290230}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &4104213165487167876
 MonoBehaviour:
@@ -5468,6 +6141,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 4104213165487167876}
@@ -5518,6 +6192,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 4104213165487167876}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 1
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -5528,6 +6211,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &4257148254699830340
 MonoBehaviour:
@@ -5550,6 +6234,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 4257148254699830340}
@@ -5597,6 +6282,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 4257148254699830340}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -5607,6 +6301,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &4511420531748345521
 MonoBehaviour:
@@ -5629,6 +6324,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 4511420531748345521}
@@ -5685,6 +6381,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 4511420531748345521}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -5695,6 +6400,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &4589704340100328103
 MonoBehaviour:
@@ -5717,6 +6423,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 4589704340100328103}
@@ -5770,6 +6477,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 4589704340100328103}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -5780,6 +6496,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: -5083831119931692969}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &4848904676017853778
 MonoBehaviour:
@@ -5802,6 +6519,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 4848904676017853778}
@@ -5852,6 +6570,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 4848904676017853778}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -5862,6 +6589,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &5858398543509477070
 MonoBehaviour:
@@ -5884,6 +6612,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 5858398543509477070}
@@ -5934,6 +6663,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 5858398543509477070}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -5943,6 +6681,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes:
   - {fileID: 0}
 --- !u!114 &5867977355319333680
@@ -5966,6 +6705,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 5867977355319333680}
@@ -6022,6 +6762,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 5867977355319333680}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -6032,6 +6781,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &6144752084185290230
 MonoBehaviour:
@@ -6113,6 +6863,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 6154586535992399588}
@@ -6169,6 +6920,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 6154586535992399588}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -6179,6 +6939,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &6155608534709464201
 MonoBehaviour:
@@ -6201,6 +6962,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 6155608534709464201}
@@ -6254,6 +7016,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 6155608534709464201}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -6264,6 +7035,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: -6918059803031238074}
   createItemNode: {fileID: -6918059803031238074}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &6827882545792692438
 MonoBehaviour:
@@ -6286,6 +7058,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 6827882545792692438}
@@ -6339,6 +7112,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 6827882545792692438}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -6349,6 +7131,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &7407173869621373020
 MonoBehaviour:
@@ -6371,6 +7154,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 7407173869621373020}
@@ -6427,6 +7211,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 7407173869621373020}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -6437,6 +7230,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &7490781477683469302
 MonoBehaviour:
@@ -6459,6 +7253,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 7490781477683469302}
@@ -6509,6 +7304,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 7490781477683469302}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -6519,6 +7323,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &7864034946285358797
 MonoBehaviour:
@@ -6541,6 +7346,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 7864034946285358797}
@@ -6591,6 +7397,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 7864034946285358797}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -6601,6 +7416,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &7910436001514996981
 MonoBehaviour:
@@ -6623,6 +7439,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 7910436001514996981}
@@ -6673,6 +7490,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 7910436001514996981}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -6683,6 +7509,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &8140980463405467493
 MonoBehaviour:
@@ -6705,6 +7532,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 8140980463405467493}
@@ -6758,6 +7586,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 8140980463405467493}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -6768,6 +7605,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 4848904676017853778}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &8244865906024227382
 MonoBehaviour:
@@ -6852,6 +7690,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 8381966547729495393}
@@ -6992,6 +7831,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 8381966547729495393}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 1
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -7001,6 +7849,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: -5458664748895097794}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &8628811164209578363
 MonoBehaviour:
@@ -7023,6 +7872,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 8628811164209578363}
@@ -7073,6 +7923,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 8628811164209578363}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 1
   openFirstChildNodeAsDefault: 0
@@ -7083,6 +7942,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &8704813406134243878
 MonoBehaviour:
@@ -7105,6 +7965,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 8704813406134243878}
@@ -7131,7 +7992,10 @@ MonoBehaviour:
       _node: {fileID: 8704813406134243878}
       _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
         Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: customizationController
+        node: {fileID: -6918059803031238074}
+        reroutePoints: []
       _direction: 1
       _connectionType: 1
       _typeConstraint: 0
@@ -7158,6 +8022,18 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 8704813406134243878}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: customizationController
+        node: {fileID: -6918059803031238074}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -7167,7 +8043,8 @@ MonoBehaviour:
     type: 2}
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: -2311692737167922394}
-  createItemNode: {fileID: 0}
+  createItemNode: {fileID: -6918059803031238074}
+  secondaryEditItemNode: {fileID: -6918059803031238074}
   childNodes: []
 --- !u!114 &8823101256967320203
 MonoBehaviour:
@@ -7190,6 +8067,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 8823101256967320203}
@@ -7240,6 +8118,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 8823101256967320203}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -7250,6 +8137,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &8881899239048837533
 MonoBehaviour:
@@ -7272,6 +8160,7 @@ MonoBehaviour:
     - createItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 8881899239048837533}
@@ -7325,6 +8214,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 8881899239048837533}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -7335,6 +8233,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: -5083831119931692969}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &9069132123563802294
 MonoBehaviour:
@@ -7357,6 +8256,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 9069132123563802294}
@@ -7407,6 +8307,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 9069132123563802294}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -7417,6 +8326,7 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 0}
   createItemNode: {fileID: 0}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []
 --- !u!114 &9222196827383306866
 MonoBehaviour:
@@ -7439,6 +8349,7 @@ MonoBehaviour:
     - editItemNode
     - childNodes
     - customizationController
+    - secondaryEditItemNode
     values:
     - _fieldName: customizationConfig
       _node: {fileID: 9222196827383306866}
@@ -7492,6 +8403,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: secondaryEditItemNode
+      _node: {fileID: 9222196827383306866}
+      _typeQualifiedName: Genies.Customization.Framework.Navigation.BaseNavigationNode,
+        Genies.Customizer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
   isRootNode: 0
   isStackable: 0
   openFirstChildNodeAsDefault: 0
@@ -7502,4 +8422,5 @@ MonoBehaviour:
   defaultChildNodeToOpen: {fileID: 0}
   editItemNode: {fileID: 8381966547729495393}
   createItemNode: {fileID: 8381966547729495393}
+  secondaryEditItemNode: {fileID: 0}
   childNodes: []

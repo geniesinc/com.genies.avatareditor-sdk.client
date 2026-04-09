@@ -224,10 +224,8 @@ MonoBehaviour:
       m_Calls: []
   _icon: {fileID: 632191375222620907}
   _title: {fileID: 7257204418142168936}
-  _collapsingDuration: 0.17
   _collapsedSize: 48
   _collapsedIconPosition: {x: 0, y: 0}
-  _expandingDuration: 0.17
   _isVerticalExpand: 0
   IsCollapsed: 0
 --- !u!114 &9163090926032338003
@@ -699,10 +697,8 @@ MonoBehaviour:
       m_Calls: []
   _icon: {fileID: 8810478370723027675}
   _title: {fileID: 2709163058487410579}
-  _collapsingDuration: 0.17
   _collapsedSize: 30
   _collapsedIconPosition: {x: 0, y: 0}
-  _expandingDuration: 0.17
   _isVerticalExpand: 1
   IsCollapsed: 0
 --- !u!1 &1990750438735067784
@@ -1891,10 +1887,8 @@ MonoBehaviour:
       m_Calls: []
   _icon: {fileID: 5284397033018627633}
   _title: {fileID: 2633505789280319818}
-  _collapsingDuration: 0.17
   _collapsedSize: 73.92
   _collapsedIconPosition: {x: 0, y: 0}
-  _expandingDuration: 0.17
   _isVerticalExpand: 0
   IsCollapsed: 0
 --- !u!1 &5243157730680784685
@@ -2530,10 +2524,8 @@ MonoBehaviour:
       m_Calls: []
   _icon: {fileID: 7194448897377940092}
   _title: {fileID: 5860182995917892284}
-  _collapsingDuration: 0.17
   _collapsedSize: 30
   _collapsedIconPosition: {x: 0, y: 0}
-  _expandingDuration: 0.17
   _isVerticalExpand: 1
   IsCollapsed: 0
 --- !u!114 &5080808822784088207
@@ -3265,10 +3257,8 @@ MonoBehaviour:
       m_Calls: []
   _icon: {fileID: 554600933122170409}
   _title: {fileID: 4730210156527879616}
-  _collapsingDuration: 0.17
   _collapsedSize: 30
   _collapsedIconPosition: {x: 0, y: 0}
-  _expandingDuration: 0.17
   _isVerticalExpand: 1
   IsCollapsed: 0
 --- !u!114 &5855432379933301897

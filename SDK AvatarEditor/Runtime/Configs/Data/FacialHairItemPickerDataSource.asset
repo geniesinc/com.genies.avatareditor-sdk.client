@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e93cf4161b1d8446ba31a90331fee418, type: 3}
-  m_Name: FacialHairColorItemPickerDataSource
+  m_Script: {fileID: 11500000, guid: 1b6d4bc4065883b45b562f693e0570f9, type: 3}
+  m_Name: FacialHairItemPickerDataSource
   m_EditorClassIdentifier: 
   _layoutConfig:
     horizontalOrVerticalLayoutConfig:
@@ -29,10 +29,8 @@ MonoBehaviour:
       spacing: {x: 8, y: 8}
       columnCount: 4
       cellSize: {x: 88, y: 96}
-  _defaultCellView: {fileID: 1467579217015140911, guid: 88d90ec6319d58f47999bc40c6a69b99,
+  _defaultCellView: {fileID: 1225775665669391065, guid: 2dbf727fd067f415bb615260ae3c225e,
     type: 3}
-  _defaultCellSize: {x: 56, y: 56}
-  _Cta: {fileID: 5589219714939405532, guid: 30477603f84674ed69309525a806b9d4, type: 3}
-  _category: 3
-  CustomIds: []
-  PreviousHairColorId: 
+  _defaultCellSize: {x: 88, y: 96}
+  hairColorDataSource: {fileID: 11400000, guid: db16537095bcf46e2aabe29716ccf704,
+    type: 2}

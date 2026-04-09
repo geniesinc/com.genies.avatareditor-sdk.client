@@ -24,6 +24,8 @@ namespace Genies.Customization.MegaEditor
     {
         public SkinColorItemPickerDataSource dataSource;
 
+        private SkinColorService _skinColorService => this.GetService<SkinColorService>();
+
         /// <summary>
         /// The focus camera to activate and set as active on this customization controller.
         /// </summary>
@@ -33,7 +35,7 @@ namespace Genies.Customization.MegaEditor
         {
             _customizer = customizer;
             dataSource.Initialize(customizer);
-
+            //dataSource.OverrideWithCustomLayoutConfig(customLayoutConfig);
             return UniTask.FromResult(true);
         }
 
@@ -108,17 +110,18 @@ namespace Genies.Customization.MegaEditor
             var nextIndexToEquip = dataSource.CurrentLongPressIndex + 1;
             Ref<SimpleColorUiData> nextUiDataRef = await dataSource.GetDataForIndexAsync(nextIndexToEquip); // this can be sync if the data exists in the cache
 
-            // Set the current skin color data to the next item
-            if (nextUiDataRef.Item?.InnerColor != null)
+            // Set the current skin color data and update avatar to the next item (or skip if no next)
+            if (nextUiDataRef.IsAlive && nextUiDataRef.Item != null)
             {
-                dataSource.CurrentSkinColorData = new SkinColorData { BaseColor = nextUiDataRef.Item.InnerColor};
+                dataSource.CurrentSkinColorData = new SkinColorData { BaseColor = nextUiDataRef.Item.InnerColor };
+                await SetSkinColorUsingCommandAsync(nextUiDataRef.Item.AssetId);
             }
 
-            // Update avatar skin color
-            await SetSkinColorUsingCommandAsync(nextUiDataRef.Item.AssetId);
-
-            // Delete the data in the backend
-            //await SkinColorServiceInstance.DeleteCustomSkinAsync(deletedDataId);
+            // Delete the custom skin color in the backend (Inventory or CloudFeatureSave)
+            if (_skinColorService != null)
+            {
+                await _skinColorService.DeleteCustomSkinAsync(deletedDataId);
+            }
 
             // Dispose current data source, reload data from backend, and reinitialize
             dataSource.Dispose();

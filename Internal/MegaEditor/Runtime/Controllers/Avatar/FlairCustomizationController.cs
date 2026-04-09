@@ -1,18 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using Cysharp.Threading.Tasks;
 using Genies.Analytics;
-using Genies.Assets.Services;
-using Genies.Avatars.Services.Flair;
-using Genies.CrashReporting;
+using Genies.Avatars.Behaviors;
 using Genies.Customization.Framework;
 using Genies.Customization.Framework.ItemPicker;
-using Genies.Inventory;
 using Genies.Inventory.UIData;
-using Genies.Looks.Customization.Commands;
 using Genies.Models;
+using Genies.Looks.Customization.Commands;
 using Genies.Naf;
 using Genies.PerformanceMonitoring;
 using Genies.Refs;
@@ -30,26 +25,22 @@ namespace Genies.Customization.MegaEditor
     [CreateAssetMenu(fileName = "FlairCustomizationController", menuName = "Genies/Customizer/Controllers/Flair Customization Controller")]
 #endif
 #if GENIES_SDK && !GENIES_INTERNAL
-    internal class FlairCustomizationController : InventoryCustomizationController, IItemPickerDataSource
+    internal class FlairCustomizationController : BaseCustomizationController
 #else
-    public class FlairCustomizationController : InventoryCustomizationController, IItemPickerDataSource
+    public class FlairCustomizationController : BaseCustomizationController
 #endif
     {
         [SerializeField]
-        private List<ExtraItemPickerSettings> _extraItemPickerSettings;
+        public FlairItemPickerDataSource flairItemDataSource;
 
         [SerializeField]
-        private string _presetGuidPriority;
+        public AvatarFeatureColorItemPickerDataSource flairColorDataSource;
 
-        //save the guid to consider as a option that is not available for customize
+        /// <summary>
+        /// The focus camera to activate and set as active on this customization controller.
+        /// </summary>
         [SerializeField]
-        private string _nonePresetId;
-
-        [SerializeField]
-        private FlairAssetType _flairCategory;
-
-        [SerializeField]
-        public FlairColorItemPickerDataSource flairColorDataSource;
+        private GeniesVirtualCameraCatalog _virtualCamera = GeniesVirtualCameraCatalog.FullBodyFocusCamera;
 
         /// <summary>
         /// Connected Chaos customization node's controller
@@ -57,44 +48,6 @@ namespace Genies.Customization.MegaEditor
         /// </summary>
         [SerializeField]
         private FaceVectorCustomizationController _chaosCustomizer;
-        private string _stringSubcategory;
-        private CancellationTokenSource _cancellationTokenSource;
-
-        private IFlairCustomColorPresetService _FlairCustomColorPresetService => this.GetService<IFlairCustomColorPresetService>();
-
-        public static readonly Dictionary<FlairAssetType, Dictionary<AnalyticsActionType, string>> AnalyticsEventsPerFlairType =
-        new Dictionary<FlairAssetType, Dictionary<AnalyticsActionType, string>>()
-        {
-            { FlairAssetType.Eyebrows, new Dictionary<AnalyticsActionType, string>()
-            {
-                {AnalyticsActionType.EnterCategory, CustomizationAnalyticsEvents.EyeBrowCategorySelected},
-                {AnalyticsActionType.PresetSelected, CustomizationAnalyticsEvents.EyeBrowPresetClickEvent},
-                {AnalyticsActionType.ColorPresetSelected, CustomizationAnalyticsEvents.EyeBrowColorPresetClickEvent},
-                {AnalyticsActionType.ColorPickerSelected, CustomizationAnalyticsEvents.EyeBrowColorPickerClickEvent},
-            }},
-            { FlairAssetType.Eyelashes, new Dictionary<AnalyticsActionType, string>()
-            {
-                {AnalyticsActionType.EnterCategory, CustomizationAnalyticsEvents.EyelashCategorySelected},
-                {AnalyticsActionType.PresetSelected, CustomizationAnalyticsEvents.EyeLashPresetClickEvent},
-                {AnalyticsActionType.ColorPresetSelected, CustomizationAnalyticsEvents.EyeLashColorPresetClickEvent},
-                {AnalyticsActionType.ColorPickerSelected, CustomizationAnalyticsEvents.EyeLashColorPickerClickEvent},
-            }},
-        };
-
-#if GENIES_SDK && !GENIES_INTERNAL
-        internal enum AnalyticsActionType
-#else
-        public enum AnalyticsActionType
-#endif
-        {
-            EnterCategory = 1,
-            PresetSelected = 2,
-            ColorPresetSelected = 3,
-            ColorPickerSelected = 4,
-        };
-
-
-        private string _lastSelectedBlendShape = "None";
 
         private CustomInstrumentationManager _InstrumentationManager => CustomInstrumentationManager.Instance;
         private static string _RootTransactionName => CustomInstrumentationOperations.CreateNewLookTransaction;
@@ -103,15 +56,9 @@ namespace Genies.Customization.MegaEditor
 
         public override UniTask<bool> TryToInitialize(Customizer customizer)
         {
-            InitializeUIProvider(
-                UIDataProviderConfigs.DefaultAvatarFlairConfig,
-                ServiceManager.Get<IAssetsService>()
-            );
-
             _customizer = customizer;
-            _stringSubcategory = _flairCategory.ToString().ToLower();
-            _loadedData = new();
 
+            flairItemDataSource.Initialize(_customizer);
             flairColorDataSource.Initialize(_customizer);
 
             return UniTask.FromResult(true);
@@ -120,32 +67,28 @@ namespace Genies.Customization.MegaEditor
         public override void StartCustomization()
         {
             _categorySpan = _InstrumentationManager.StartChildSpanUnderTransaction(_RootTransactionName,
-                nameof(FlairCustomizationController), $"open face - {_stringSubcategory} category");
+                nameof(FlairCustomizationController), $"open face - {flairItemDataSource.FlairCategory.ToString().ToLower()} category");
 
             AnalyticsReporter.LogEvent(CustomizationAnalyticsEvents.FlairCustomizationStarted);
-            //Aim the camera at the body area
             ActivateCamera();
 
-            ShowPrimaryPicker(this);
+            flairItemDataSource.StartCustomization();
+            _customizer.View.PrimaryItemPicker.Show(flairItemDataSource).Forget();
 
-            flairColorDataSource.SetCategory(_flairCategory);
+            flairColorDataSource.SetCategoryAndConfigureProvider(flairItemDataSource.FlairCategory);
             flairColorDataSource.StartCustomization();
             ShowSecondaryPicker(flairColorDataSource);
             ScrollToSelectedItemInSecondaryPicker(flairColorDataSource).Forget();
 
-
             AddListeners();
 
-            var currentAssetEquipped = _ids?.FirstOrDefault(CurrentCustomizableAvatar.IsAssetEquipped);
+            var currentAssetEquipped = flairItemDataSource.GetCurrentEquippedAssetId();
             var props = new AnalyticProperties();
-
-            if(currentAssetEquipped != null)
+            if (currentAssetEquipped != null)
             {
-                props.AddProperty("flairAssetName", $"{currentAssetEquipped}");
+                props.AddProperty("flairAssetName", currentAssetEquipped);
             }
-
-            AnalyticsReporter.LogEvent(AnalyticsEventsPerFlairType[_flairCategory][AnalyticsActionType.EnterCategory], props);
-
+            AnalyticsReporter.LogEvent(FlairItemPickerDataSource.AnalyticsEventsPerFlairType[flairItemDataSource.FlairCategory][FlairItemPickerDataSource.AnalyticsActionType.EnterCategory], props);
         }
 
         private void AddListeners()
@@ -153,6 +96,7 @@ namespace Genies.Customization.MegaEditor
             _customizer.View.EditOrDeleteController.OnEditClicked += EditCustomColorData;
             _customizer.View.EditOrDeleteController.OnDeleteClicked += DeleteCustomColorData;
             _customizer.View.SecondaryItemPicker.OnScroll += CloseEditOrDeleteButtonsWhenCrossingLeftMargin;
+            flairItemDataSource.OnItemClicked += OnFlairItemClicked;
         }
 
         private void RemoveListeners()
@@ -160,6 +104,19 @@ namespace Genies.Customization.MegaEditor
             _customizer.View.EditOrDeleteController.OnEditClicked -= EditCustomColorData;
             _customizer.View.EditOrDeleteController.OnDeleteClicked -= DeleteCustomColorData;
             _customizer.View.SecondaryItemPicker.OnScroll -= CloseEditOrDeleteButtonsWhenCrossingLeftMargin;
+            flairItemDataSource.OnItemClicked -= OnFlairItemClicked;
+        }
+
+        private void OnFlairItemClicked(string assetId, bool wasSelected)
+        {
+            var currentPoseSpan = _InstrumentationManager.StartChildSpanUnderSpan(_categorySpan, assetId, $"flair asset id");
+            _InstrumentationManager.FinishChildSpan(_previousSpan);
+            _previousSpan = currentPoseSpan;
+
+            if (!wasSelected && _chaosCustomizer != null)
+            {
+                _chaosCustomizer.ResetAllValues();
+            }
         }
 
         private void EditCustomColorData()
@@ -170,14 +127,12 @@ namespace Genies.Customization.MegaEditor
 
         private async void DeleteCustomColorData()
         {
-            var category = flairColorDataSource.FlairAssetType.ToString();
             var deletedDataId = flairColorDataSource.CurrentLongPressColorData?.AssetId;
 
-            // Trigger the animation of closing the edit and delete button and forget.
             _customizer.View.EditOrDeleteController.DisableAndDeactivateButtons().Forget();
 
             var nextIndexToEquip = flairColorDataSource.CurrentLongPressIndex + 1;
-            Ref<GradientColorUiData> nextUiDataRef = await flairColorDataSource.GetDataForIndexAsync(nextIndexToEquip); // this can be sync if the data exists in the cache
+            Ref<GradientColorUiData> nextUiDataRef = await flairColorDataSource.GetDataForIndexAsync(nextIndexToEquip);
 
             flairColorDataSource.CurrentLongPressColorData = nextUiDataRef.Item;
 
@@ -185,47 +140,39 @@ namespace Genies.Customization.MegaEditor
 
             await command.ExecuteAsync();
 
-            // Delete the data in the backend
             if (deletedDataId != null)
             {
-                await _FlairCustomColorPresetService.DeleteCustomFlairColor(deletedDataId, category);
+                await flairColorDataSource.UserColorSource.DeleteUserColorAsync(deletedDataId);
 
-                // Dispose current data source, reload data from backend, and reinitialize
-                //refresh the data provider
-                //await flairColorDataSource._uiProvider.ReloadAsync();
                 flairColorDataSource.Dispose();
-                await flairColorDataSource.InitializeAndGetCountAsync(null, new());
+                await flairColorDataSource.InitializeAndGetCountAsync(null, new System.Threading.CancellationToken());
 
-                // Call the picker show the updated view
                 ShowSecondaryPicker(flairColorDataSource);
             }
         }
 
-        private static GenieColorEntry[] GetColors(FlairColorItemPickerDataSource source)
+        private static GenieColorEntry[] GetColors(AvatarFeatureColorItemPickerDataSource source)
         {
-            var colors = FlairColorItemPickerDataSource.SafeGetColorsArray(source.CurrentLongPressColorData);
-            return FlairColorItemPickerDataSource.MapToFlairColors(colors, source.FlairAssetType);
+            var colors = AvatarFeatureColorItemPickerDataSource.SafeGetColorsArray(source.CurrentLongPressColorData);
+            return AvatarFeatureColorItemPickerDataSource.MapToFlairColors(colors, source.FlairAssetType);
         }
-
 
         public override void StopCustomization()
         {
-
             _InstrumentationManager.FinishChildSpan(_previousSpan);
             _InstrumentationManager.FinishChildSpan(_categorySpan);
             AnalyticsReporter.LogEvent(CustomizationAnalyticsEvents.FlairCustomizationStopped);
-            //Aim the camera at the body area
             ResetCamera();
 
             RemoveListeners();
 
             _customizer.View.EditOrDeleteController.DeactivateButtonsImmediately();
 
-            HidePrimaryPicker();
+            _customizer.View.PrimaryItemPicker.Hide();
             HideSecondaryPicker();
 
+            flairItemDataSource.StopCustomization();
             flairColorDataSource.StopCustomization();
-
         }
 
         private void CloseEditOrDeleteButtonsWhenCrossingLeftMargin()
@@ -240,205 +187,29 @@ namespace Genies.Customization.MegaEditor
         public override void OnUndoRedo()
         {
             _InstrumentationManager.FinishChildSpan(_previousSpan);
-            RefreshPrimaryPickerSelection();
-            RefreshSecondaryPickerSelection();
+            _customizer.View.PrimaryItemPicker.RefreshSelection().Forget();
+            _customizer.View.SecondaryItemPicker.RefreshSelection().Forget();
         }
 
-        public int GetCurrentSelectedIndex()
-        {
-            return GetCurrentSelectedIndexBase(CurrentCustomizableAvatar.IsAssetEquipped);
-        }
-
-        public override bool ItemSelectedIsValidForProcessCTA()
-        {
-            var equippedId = _ids?.FirstOrDefault(CurrentCustomizableAvatar.IsAssetEquipped);
-
-            //valid to process a CTA if it's not the none preset option or an unselected item
-            return !string.Equals(equippedId, _nonePresetId);
-        }
-
-        // Pagination support - properties inherited from base class
-        // public bool HasMoreItems and public bool IsLoadingMore are in base class
-
-        public async UniTask<bool> LoadMoreItemsAsync(CancellationToken cancellationToken)
-        {
-            // Use base implementation with reorder logic
-            return await LoadMoreItemsBaseAsync(
-                cancellationToken,
-                _stringSubcategory,
-                null,
-                ReorderIdsWithPriority
-            );
-        }
-
-        private List<string> ReorderIdsWithPriority(List<string> ids)
-        {
-            if (ids == null || ids.Count == 0)
-            {
-                return ids;
-            }
-
-            var orderedList = new List<string>(ids);
-
-            // Only reorder if _presetGuidPriority exists in the original list
-            if (!string.IsNullOrEmpty(_presetGuidPriority) && ids.Contains(_presetGuidPriority))
-            {
-                orderedList.Remove(_presetGuidPriority);
-                orderedList.Insert(0, _presetGuidPriority);
-            }
-
-            return orderedList;
-        }
-
-        public async UniTask<int> InitializeAndGetCountAsync(int? pageSize, CancellationToken cancellationToken)
-        {
-            // Use base implementation with reorder logic
-            return await InitializeAndGetCountBaseAsync(
-                cancellationToken,
-                _stringSubcategory,
-                null,
-                pageSize,
-                ReorderIdsWithPriority
-            );
-        }
-
-        public override ItemPickerCellView GetCellPrefab(int index)
-        {
-            if(_extraItemPickerSettings == null )
-            {
-                return _defaultCellView;
-            }
-
-            ExtraItemPickerSettings item = _extraItemPickerSettings.Find(e => e.StaticIndexOnList == index);
-            var prefab = item != null ? item.ExtraItemPicker : _defaultCellView;
-            return prefab;
-        }
-
-        /// <summary>
-        /// Get cached data if exists else load a new ref.
-        /// </summary>
-        /// <param name="index"> Item index </param>
-        private async UniTask<Ref<BasicInventoryUiData>> GetDataForIndexAsync(int index)
-        {
-            // Special handling for extra item picker settings
-            if (_extraItemPickerSettings != null && _extraItemPickerSettings.Exists(e=>e.StaticIndexOnList == index))
-            {
-                //Create a 'null' ref to return w/ 'using' for disposal
-                Ref<BasicInventoryUiData> emptyTempRef = CreateRef.From<BasicInventoryUiData>(null);
-                return emptyTempRef;
-            }
-
-            return await GetDataForIndexBaseAsync<BasicInventoryUiData>(index, "FlairCustomizationController");
-        }
-
-        public ItemPickerCtaConfig GetCtaConfig()
-        {
-            if (_flairCategory != FlairAssetType.Eyelashes)
-            {
-                return new ItemPickerCtaConfig(ctaType: CTAButtonType.CustomizeCTA, noneSelectedDelegate: CustomizeSelectedAsync);
-            }
-
-            return null;
-        }
-
-        private UniTask<bool> CustomizeSelectedAsync(CancellationToken cancellationToken)
-        {
-            switch (_flairCategory)
-            {
-                case FlairAssetType.Eyebrows:
-                    CurrentDnaCustomizationViewState = AvatarBaseCategory.Brow;
-                    break;
-                default:
-                    CrashReporter.LogError($"Invalid Customization Selection {_flairCategory.ToString()}");
-                    break;
-            }
-            AnalyticsReporter.LogEvent(CustomizationAnalyticsEvents.ChaosFaceCustomSelectEvent);
-            _customizer.GoToEditItemNode();
-            return UniTask.FromResult(true);
-        }
-
-        public async UniTask<bool> OnItemClickedAsync(int index, ItemPickerCellView clickedCell, bool wasSelected, CancellationToken cancellationToken)
-        {
-            if (_extraItemPickerSettings != null && _extraItemPickerSettings.Exists(e => e.StaticIndexOnList == index))
-            {
-                throw new NotImplementedException();
-                // clickedCell.ToggleSelected(true);
-                // return true;
-            }
-
-            if (TryGetLoadedData<BasicInventoryUiData>(index, out var data) is false)
-            {
-                return false;
-            }
-
-
-            // performance monitoring
-            var currentPoseSpan = _InstrumentationManager.StartChildSpanUnderSpan(_categorySpan,data.Item.AssetId, $"{_stringSubcategory} asset id");
-            _InstrumentationManager.FinishChildSpan(_previousSpan);
-            _previousSpan = currentPoseSpan;
-
-            if (wasSelected && data.Item.IsEditable)
-            {
-                _customizer.GoToEditItemNode();
-                return true;
-            }
-
-            if (!wasSelected && _chaosCustomizer != null)
-            {
-                _chaosCustomizer.ResetAllValues();
-            }
-
-            var command = new EquipNativeAvatarAssetCommand(data.Item.AssetId, CurrentCustomizableAvatar);
-            await command.ExecuteAsync(cancellationToken);
-
-            _lastSelectedBlendShape = data.Item?.DisplayName;
-
-            if (cancellationToken.IsCancellationRequested)
-            {
-                return false;
-            }
-
-            var props = new AnalyticProperties();
-            props.AddProperty("flairAssetName", $"{data.Item?.AssetId}");
-            AnalyticsReporter.LogEvent(AnalyticsEventsPerFlairType[_flairCategory][AnalyticsActionType.PresetSelected], props);
-
-            _customizer.RegisterCommand(command);
-
-            return true;
-        }
-
-        /// <summary>
-        /// Initialize the cell view when its visible.
-        /// </summary>
-        /// <param name="view"> The view to initialize </param>
-        /// <param name="index"> Cell index </param>
-        /// <param name="isSelected"> If its already selected </param>
-        /// <param name="cancellationToken"> The cancellation token </param>
-        /// <returns></returns>
-        public async UniTask<bool> InitializeCellViewAsync(ItemPickerCellView view, int index, bool isSelected, CancellationToken cancellationToken)
-        {
-            if (_extraItemPickerSettings != null && _extraItemPickerSettings.Exists(e => e.StaticIndexOnList == index))
-            {
-               view.SetState(ItemCellState.Initialized);
-               view.SetDebuggingAssetLabel(_ids?[index]);
-               return true;
-            }
-
-            return await InitializeCellViewBaseAsync<BasicInventoryUiData>(view, index, isSelected, cancellationToken);
-        }
-
-
-        /// <summary>
-        /// Dispose the controller.
-        /// </summary>
         public override void Dispose()
         {
             base.Dispose();
 
-            flairColorDataSource.Dispose();
             _categorySpan = null;
             _previousSpan = null;
 
+            flairItemDataSource.Dispose();
+            flairColorDataSource.Dispose();
+        }
+
+        private void ActivateCamera()
+        {
+            CurrentVirtualCameraController.ActivateVirtualCamera(_virtualCamera).Forget();
+        }
+
+        private void ResetCamera()
+        {
+            CurrentVirtualCameraController.ActivateVirtualCamera(GeniesVirtualCameraCatalog.FullBodyFocusCamera).Forget();
         }
     }
 }

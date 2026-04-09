@@ -30,7 +30,7 @@ namespace Genies.Customization.MegaEditor
 #endif
     {
         [SerializeField]
-        private HairColorItemPickerDataSource hairColorDataSource;
+        public AvatarFeatureColorItemPickerDataSource hairColorDataSource;
 
         /// <summary>
         /// Allows overriding layout config from <see cref="HairCustomizationController"/> with OverrideWithCustomLayoutConfig
@@ -59,7 +59,7 @@ namespace Genies.Customization.MegaEditor
 
         protected override string GetAssetTypeString()
         {
-            return "hair";
+            return hairColorDataSource.ColorPresetType.ToString().ToLower();
         }
 
         protected override void OnAfterInitialized()
@@ -129,7 +129,8 @@ namespace Genies.Customization.MegaEditor
                 }
 
                 // Get updated IDs list
-                _ids = await _uiProvider.GetAllAssetIds(categories: new List<string>{ "hair" }, null) ?? new List<string>();
+                var categoryList = new List<string> { GetAssetTypeString() };
+                _ids = await _uiProvider.GetAllAssetIds(categories: categoryList, null) ?? new List<string>();
 
                 return true;
             }

@@ -12,7 +12,9 @@ using Genies.Looks.Customization.Commands;
 using Genies.MegaEditor;
 using Genies.Naf;
 using Genies.Refs;
+using Genies.ServiceManagement;
 using Genies.Ugc;
+using Genies.Ugc.CustomSkin;
 using Genies.UI.Widgets;
 using Genies.Utilities;
 using UnityEngine;
@@ -33,6 +35,8 @@ namespace Genies.Customization.MegaEditor
         private List<BodyPresetData> _thumbnailData;
 
         public SkinColorItemPickerDataSource dataSource;
+
+        private SkinColorService _skinColorService => this.GetService<SkinColorService>();
 
         public override UniTask<bool> TryToInitialize(Customizer customizer)
         {
@@ -100,7 +104,7 @@ namespace Genies.Customization.MegaEditor
         private void EditCustomSkinColorData()
         {
             CurrentCustomColorViewState = CustomColorViewState.Edit;
-            _customizer.GoToEditItemNode();
+            _customizer.GoToEditItemNode(true);
         }
 
         private async void DeleteCustomSkinColorData()
@@ -124,17 +128,18 @@ namespace Genies.Customization.MegaEditor
             var nextIndexToEquip = dataSource.CurrentLongPressIndex + 1;
             Ref<SimpleColorUiData> nextUiDataRef = await dataSource.GetDataForIndexAsync(nextIndexToEquip); // this can be sync if the data exists in the cache
 
-            // Set the current skin color data to the next item
-            if (nextUiDataRef.Item?.InnerColor != null)
+            // Set the current skin color data and update avatar to the next item (or skip if no next)
+            if (nextUiDataRef.IsAlive && nextUiDataRef.Item != null)
             {
-                dataSource.CurrentSkinColorData = new SkinColorData { BaseColor = nextUiDataRef.Item.InnerColor};
+                dataSource.CurrentSkinColorData = new SkinColorData { BaseColor = nextUiDataRef.Item.InnerColor };
+                await SetSkinColorUsingCommandAsync(nextUiDataRef.Item.AssetId);
             }
 
-            // Update avatar skin color
-            await SetSkinColorUsingCommandAsync(nextUiDataRef.Item.AssetId);
-
-            // Delete the data in the backend
-            //await SkinColorServiceInstance.DeleteCustomSkinAsync(deletedDataId);
+            // Delete the custom skin color in the backend
+            if (_skinColorService != null)
+            {
+                await _skinColorService.DeleteCustomSkinAsync(deletedDataId);
+            }
 
             // Dispose current data source, reload data from backend, and reinitialize
             dataSource.Dispose();
@@ -185,7 +190,7 @@ namespace Genies.Customization.MegaEditor
         private UniTask<bool> CustomizeSelectedAsync(CancellationToken cancellationToken)
         {
             AnalyticsReporter.LogEvent(CustomizationAnalyticsEvents.ChaosBodyShapeCustomSelectEvent);
-            _customizer.GoToEditItemNode();
+            _customizer.GoToEditItemNode(false);
             return UniTask.FromResult(true);
         }
 

@@ -32,6 +32,7 @@ MonoBehaviour:
   _defaultCellView: {fileID: 1467579217015140911, guid: 88d90ec6319d58f47999bc40c6a69b99,
     type: 3}
   _defaultCellSize: {x: 56, y: 56}
-  _cellView: {fileID: 1467579217015140911, guid: 88d90ec6319d58f47999bc40c6a69b99,
-    type: 3}
   _Cta: {fileID: 5589219714939405532, guid: 30477603f84674ed69309525a806b9d4, type: 3}
+  _category: 1
+  CustomIds: []
+  PreviousHairColorId: 

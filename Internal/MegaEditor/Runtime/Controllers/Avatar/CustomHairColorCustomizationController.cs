@@ -5,9 +5,9 @@ using Genies.Avatars.Behaviors;
 using Genies.CameraSystem;
 using Genies.CrashReporting;
 using Genies.Customization.Framework;
-using Genies.Inventory;
 using Genies.Looks.Customization.Commands;
 using Genies.MegaEditor;
+using Genies.Models;
 using Genies.Naf;
 using Genies.ServiceManagement;
 using Genies.Ugc;
@@ -33,7 +33,7 @@ namespace Genies.Customization.MegaEditor
         private CustomizeColorView _customizeColorViewInstance;
 
         [SerializeField]
-        private HairColorItemPickerDataSource dataSource;
+        public AvatarFeatureColorItemPickerDataSource hairColorDataSource;
 
         /// <summary>
         /// The focus camera to activate and set as active on this customization controller.
@@ -71,11 +71,14 @@ namespace Genies.Customization.MegaEditor
 
             if (_customizeColorViewInstance == null)
             {
-                _customizeColorViewInstance = _customizer.View.GetOrCreateViewInLayer("custom-hair-color-view",
+                var viewDesc = (hairColorDataSource.ColorPresetType == ColorPresetType.Hair)
+                    ? "custom-hair-color-view"
+                    : "custom-facialhair-color-view";
+                _customizeColorViewInstance = _customizer.View.GetOrCreateViewInLayer(viewDesc,
                     CustomizerViewLayer.CustomizationEditorFullScreen, _prefab);
             }
 
-            dataSource.Initialize(_customizer);
+            hairColorDataSource.Initialize(_customizer);
 
             return await UniTask.FromResult(true);
         }
@@ -88,15 +91,23 @@ namespace Genies.Customization.MegaEditor
             PictureInPictureController.Enable();
             VirtualCameraController.SetFullScreenModeInFocusCameras(true);
 
-            dataSource.StartCustomization();
+            hairColorDataSource.StartCustomization();
 
             // Initialize the customize color view with the current hair colors
-            Color[] initialColors =
+            Color[] initialColors = (hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?
+            new Color[]
             {
                 CurrentCustomizableAvatar.GetColor(GenieColor.HairBase) ?? Color.white,
                 CurrentCustomizableAvatar.GetColor(GenieColor.HairR) ?? Color.white,
                 CurrentCustomizableAvatar.GetColor(GenieColor.HairG) ?? Color.white,
                 CurrentCustomizableAvatar.GetColor(GenieColor.HairB) ?? Color.white,
+            } :
+            new Color[]
+            {
+                CurrentCustomizableAvatar.GetColor(GenieColor.FacialhairBase) ?? Color.white,
+                CurrentCustomizableAvatar.GetColor(GenieColor.FacialhairR) ?? Color.white,
+                CurrentCustomizableAvatar.GetColor(GenieColor.FacialhairG) ?? Color.white,
+                CurrentCustomizableAvatar.GetColor(GenieColor.FacialhairB) ?? Color.white,
             };
 
             // Store the original colors for potential revert
@@ -123,7 +134,7 @@ namespace Genies.Customization.MegaEditor
 
             CurrentCustomColorViewState = CustomColorViewState.Normal;
 
-            dataSource.StopCustomization();
+            hairColorDataSource.StopCustomization();
         }
 
         public override bool HasSaveAction()
@@ -148,12 +159,12 @@ namespace Genies.Customization.MegaEditor
                 {
                     case CustomColorViewState.Edit:
                         // Load the existing data to preserve all properties for proper updating
-                        _editedData = await HairColorService.CustomColorDataAsync(dataSource.CurrentHairColorId);
+                        _editedData = await HairColorService.CustomColorDataAsync(hairColorDataSource.CurrentHairColorId);
                         if (_editedData == null)
                         {
                             // Fallback: create new if somehow the existing data is not found
                             _editedData = new CustomHairColorData();
-                            _editedData.Id = dataSource.CurrentHairColorId;
+                            _editedData.Id = hairColorDataSource.CurrentHairColorId;
                         }
                         break;
 
@@ -168,21 +179,37 @@ namespace Genies.Customization.MegaEditor
                         return true;
                 }
 
-                _editedData.ColorBase = CurrentCustomizableAvatar.GetColor(GenieColor.HairBase) ?? Color.black;
-                _editedData.ColorR = CurrentCustomizableAvatar.GetColor(GenieColor.HairR) ?? Color.black;
-                _editedData.ColorG = CurrentCustomizableAvatar.GetColor(GenieColor.HairG) ?? Color.black;
-                _editedData.ColorB = CurrentCustomizableAvatar.GetColor(GenieColor.HairB) ?? Color.black;
+                if (hairColorDataSource.ColorPresetType == ColorPresetType.Hair)
+                {
+                    _editedData.ColorBase = CurrentCustomizableAvatar.GetColor(GenieColor.HairBase) ?? Color.black;
+                    _editedData.ColorR = CurrentCustomizableAvatar.GetColor(GenieColor.HairR) ?? Color.black;
+                    _editedData.ColorG = CurrentCustomizableAvatar.GetColor(GenieColor.HairG) ?? Color.black;
+                    _editedData.ColorB = CurrentCustomizableAvatar.GetColor(GenieColor.HairB) ?? Color.black;
+                }
+                else
+                {
+                    _editedData.ColorBase = CurrentCustomizableAvatar.GetColor(GenieColor.FacialhairBase) ?? Color.black;
+                    _editedData.ColorR = CurrentCustomizableAvatar.GetColor(GenieColor.FacialhairR) ?? Color.black;
+                    _editedData.ColorG = CurrentCustomizableAvatar.GetColor(GenieColor.FacialhairG) ?? Color.black;
+                    _editedData.ColorB = CurrentCustomizableAvatar.GetColor(GenieColor.FacialhairB) ?? Color.black;
+                }
 
                 CustomHairColorData savedData = await HairColorService.CreateOrUpdateCustomHair(_editedData);
 
                 if (savedData != null)
                 {
-                    dataSource.CurrentHairColorId = savedData.Id;
+                    hairColorDataSource.CurrentHairColorId = savedData.Id;
 
-                    var newColors = new GenieColorEntry[]
+                    var newColors = (hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?
+                    new GenieColorEntry[]
                     {
                         new(GenieColor.HairBase, _editedData.ColorBase), new(GenieColor.HairR, _editedData.ColorR),
                         new(GenieColor.HairG, _editedData.ColorG), new(GenieColor.HairB, _editedData.ColorB),
+                    }:
+                    new GenieColorEntry[]
+                    {
+                        new(GenieColor.FacialhairBase, _editedData.ColorBase), new(GenieColor.FacialhairR, _editedData.ColorR),
+                        new(GenieColor.FacialhairG, _editedData.ColorG), new(GenieColor.FacialhairB, _editedData.ColorB),
                     };
 
                     ICommand command = new SetNativeAvatarColorsCommand(newColors, CurrentCustomizableAvatar);
@@ -190,8 +217,8 @@ namespace Genies.Customization.MegaEditor
                 }
 
                 // Refresh the data provider to show updated custom colors (similar to flair colors)
-                dataSource.Dispose();
-                await dataSource.InitializeAndGetCountAsync(null, new());
+                hairColorDataSource.Dispose();
+                await hairColorDataSource.InitializeAndGetCountAsync(null, new());
 
                 return true;
             }
@@ -212,16 +239,16 @@ namespace Genies.Customization.MegaEditor
             switch (_customizeColorViewInstance.ColorRegionsView.SelectedRegionIndex)
             {
                 case 0:
-                    CurrentCustomizableAvatar.SetColorAsync(GenieColor.HairBase, color).Forget();
+                    CurrentCustomizableAvatar.SetColorAsync((hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?GenieColor.HairBase:GenieColor.FacialhairBase, color).Forget();
                     break;
                 case 1:
-                    CurrentCustomizableAvatar.SetColorAsync(GenieColor.HairR, color).Forget();
+                    CurrentCustomizableAvatar.SetColorAsync((hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?GenieColor.HairR:GenieColor.FacialhairR, color).Forget();
                     break;
                 case 2:
-                    CurrentCustomizableAvatar.SetColorAsync(GenieColor.HairG, color).Forget();
+                    CurrentCustomizableAvatar.SetColorAsync((hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?GenieColor.HairG:GenieColor.FacialhairG, color).Forget();
                     break;
                 case 3:
-                    CurrentCustomizableAvatar.SetColorAsync(GenieColor.HairB, color).Forget();
+                    CurrentCustomizableAvatar.SetColorAsync((hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?GenieColor.HairB:GenieColor.FacialhairB, color).Forget();
                     break;
             }
         }
@@ -238,21 +265,21 @@ namespace Genies.Customization.MegaEditor
             {
                 var colors = new GenieColorEntry[]
                 {
-                    new (GenieColor.HairBase, _originalHairColors[0]),
-                    new (GenieColor.HairR,    _originalHairColors[1]),
-                    new (GenieColor.HairG,    _originalHairColors[2]),
-                    new (GenieColor.HairB,    _originalHairColors[3]),
+                    new ((hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?GenieColor.HairBase:GenieColor.FacialhairBase, _originalHairColors[0]),
+                    new ((hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?GenieColor.HairR:GenieColor.FacialhairR,    _originalHairColors[1]),
+                    new ((hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?GenieColor.HairG:GenieColor.FacialhairG,    _originalHairColors[2]),
+                    new ((hairColorDataSource.ColorPresetType == ColorPresetType.Hair)?GenieColor.HairB:GenieColor.FacialhairB,    _originalHairColors[3]),
                 };
 
                 ICommand command = new SetNativeAvatarColorsCommand(colors, CurrentCustomizableAvatar);
                 command.ExecuteAsync(new CancellationTokenSource().Token);
             }
 
-            dataSource.Dispose();
+            hairColorDataSource.Dispose();
 
             // Also reset the data source ID
-            var previousHairColorId = dataSource.PreviousHairColorId;
-            dataSource.CurrentHairColorId = previousHairColorId;
+            var previousHairColorId = hairColorDataSource.PreviousHairColorId;
+            hairColorDataSource.CurrentHairColorId = previousHairColorId;
 
             return UniTask.FromResult(true);
         }

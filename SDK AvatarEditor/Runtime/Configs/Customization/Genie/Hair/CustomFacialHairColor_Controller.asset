@@ -9,31 +9,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8fa47b581599b84fa238fbfe6bfb6de, type: 3}
-  m_Name: CustomSkinColor_Controller
+  m_Script: {fileID: 11500000, guid: a1ef94487f29d164aa13ed1e875eb73d, type: 3}
+  m_Name: CustomFacialHairColor_Controller
   m_EditorClassIdentifier: 
   useCustomLayoutConfig: 1
   customLayoutConfig:
     horizontalOrVerticalLayoutConfig:
       padding:
-        m_Left: 0
-        m_Right: 0
-        m_Top: 0
-        m_Bottom: 0
+        m_Left: 8
+        m_Right: 8
+        m_Top: 8
+        m_Bottom: 8
       spacing: 8
     gridLayoutConfig:
       padding:
-        m_Left: 0
-        m_Right: 0
-        m_Top: 0
-        m_Bottom: 0
+        m_Left: 8
+        m_Right: 8
+        m_Top: 8
+        m_Bottom: 8
       spacing: {x: 8, y: 8}
       columnCount: 4
       cellSize: {x: 88, y: 96}
-  _breadcrumbName: Custom Skin Color
+  _breadcrumbName: Custom Facial Hair Color
   _viewConfig:
-    navBarButtonName: Custom Skin Color
-    icon: {fileID: 21300000, guid: ea0b8f6a21e3d4deba02c19380049fbd, type: 3}
+    navBarButtonName: Custom Facial Hair Color
+    icon: {fileID: 21300000, guid: fb8c9f1ab17b8416d8d8f7e5989e682c, type: 3}
     customNodePrefab: {fileID: 0}
     showNavBarCreateNewItemCta: 0
     showGlobalNavBar: 1
@@ -46,6 +46,7 @@ MonoBehaviour:
     actionBarFlags: 24
   _defaultCellView: {fileID: 0}
   _defaultCellSize: {x: 88, y: 96}
-  _customizeColorViewPrefab: {fileID: 8047911698646570687, guid: 378f0f3242cd06e458b707ed96e5e420,
-    type: 3}
-  dataSource: {fileID: 11400000, guid: 6ec49cf15912b47f0a8edc0e8351a8e7, type: 2}
+  _prefab: {fileID: 8047911698646570687, guid: f44b131be4ca5f248866b0af600e0d22, type: 3}
+  hairColorDataSource: {fileID: 11400000, guid: db16537095bcf46e2aabe29716ccf704,
+    type: 2}
+  virtualCamera: 11

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5611ea6d9948f290444d841345c93f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ba4558426e9cc143a3432f168c29ed3, type: 3}
   m_Name: FacialHair_Controller
   m_EditorClassIdentifier: 
   useCustomLayoutConfig: 1
@@ -44,11 +44,9 @@ MonoBehaviour:
     showHeaderText: 0
     headerText: 
     actionBarFlags: 24
-  _defaultCellView: {fileID: 1225775665669391065, guid: 2dbf727fd067f415bb615260ae3c225e,
-    type: 3}
+  _defaultCellView: {fileID: 0}
   _defaultCellSize: {x: 88, y: 96}
-  _virtualCamera: 11
-  _secondaryDataSource: {fileID: 0}
-  _facialHairColorDataSource: {fileID: 11400000, guid: c1399e4054be54850bd3e22f04b0ae2c,
+  hairItemDataSource: {fileID: 11400000, guid: 2c642e3b9412f4259ac9659c9322d10c, type: 2}
+  hairColorDataSource: {fileID: 11400000, guid: db16537095bcf46e2aabe29716ccf704,
     type: 2}
-  _subcategory: 4
+  virtualCamera: 10
