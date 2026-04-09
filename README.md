@@ -73,4 +73,4 @@ bool isOpen = AvatarEditorSdk.IsAvatarEditorOpen;
 ManagedAvatar avatar = AvatarEditorSdk.GetAvatarEditorAvatar();
 ```
 
-See [Documentation](https://docs.genies.com/docs/sdk-avatar/tools/legacy-editor) for more information.
+See our [Documentation](https://docs.genies.com/docs/sdk-avatar/tools/legacy-editor) for more information.
