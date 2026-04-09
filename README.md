@@ -1,6 +1,8 @@
 # Genies Avatar Editor SDK
 
-The Avatar Editor SDK is an add-on package for the [Genies Avatar SDK](https://assetstore.unity.com/packages/tools/game-toolkits/genies-avatar-sdk-336166?srsltid=AfmBOoq0n2Mqua3R8zaDscD2qRxoSjsYJE8FTPJqu8Qt53ZuHKq7JSfO) that provides a full-featured UI for customizing Genies Avatars. It allows users to change wearables, body features, face features, and more through an interactive editor experience.
+The Avatar Editor SDK is a legacy add-on package for the [Genies Avatar SDK](https://assetstore.unity.com/packages/tools/game-toolkits/genies-avatar-sdk-336166?srsltid=AfmBOoq0n2Mqua3R8zaDscD2qRxoSjsYJE8FTPJqu8Qt53ZuHKq7JSfO) that provides a full-featured UI for customizing Genies Avatars. It allows users to change wearables, body features, face features, and more through an interactive editor experience.
+
+While this package is publicly available for use, we will not be updating it as we continue to update the Genies Avatar SDK. We recommend using the prefabs and scripts from the ["Creating an Avatar Editor" sample](http://docs.genies.com/docs/sdk-avatar/sample-scenes/creating-editor) that can be imported from within the Genies Avatar SDK.
 
 ## Requirements
 
