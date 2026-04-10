@@ -73,18 +73,58 @@ namespace Genies.Sdk.AvatarEditor.Core
         public NavigationGraph NavGraph => navGraph;
 
         private AvatarSaveSettings _saveSettings = new AvatarSaveSettings(AvatarSaveOption.SaveRemotelyAndContinue);
+        private bool _initialized;
+        private Action _pendingDefinitionLoadedHandler;
+        private GeniesAvatar _avatar;
 
         public async UniTask Initialize(GeniesAvatar avatar, Camera cam, VirtualCameraManager virtualCameraManager)
         {
+            _initialized = false;
             EditingBehaviour = new AvatarEditingBehaviour(this, virtualCameraManager);
             EditingBehaviour.SetSaveSettings(_saveSettings);
+
+            ClearPendingDefinitionLoaded();
+            _avatar = avatar;
+
+            if (avatar.Controller.IsDefinitionLoaded)
+            {
+                await OnDefinitionLoadedAsync(avatar, cam);
+            }
+            else
+            {
+                void OnDefinitionLoaded()
+                {
+                    ClearPendingDefinitionLoaded();
+                    OnDefinitionLoadedAsync(avatar, cam).Forget();
+                }
+
+                _pendingDefinitionLoadedHandler = OnDefinitionLoaded;
+                avatar.Controller.DefinitionLoaded += OnDefinitionLoaded;
+                await UniTask.WaitUntil(() => _initialized);
+            }
+        }
+
+        private void ClearPendingDefinitionLoaded()
+        {
+            if (_pendingDefinitionLoadedHandler != null)
+            {
+                _avatar.Controller.DefinitionLoaded -= _pendingDefinitionLoadedHandler;
+                _pendingDefinitionLoadedHandler = null;
+            }
+        }
+
+        private async UniTask OnDefinitionLoadedAsync(GeniesAvatar avatar, Camera cam)
+        {
             await EditingBehaviour.StartEditing(avatar, cam, navGraph);
             AddListeners();
 
             await ProcessInitialization();
+            _initialized = true;
         }
-        public void OnDisable()
+
+        private void OnDestroy()
         {
+            ClearPendingDefinitionLoaded();
             RemoveListeners();
         }
 
@@ -95,7 +135,7 @@ namespace Genies.Sdk.AvatarEditor.Core
                 editAvatarButton.onClick.AddListener(OnGenieButtonClicked);
             }
 
-            if (editOutfitButton)
+            if (editOutfitButton != null)
             {
                 editOutfitButton.onClick.AddListener(OnOutfitButtonClicked);
             }

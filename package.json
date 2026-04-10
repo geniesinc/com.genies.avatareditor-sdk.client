@@ -7,7 +7,7 @@
   "description": "The Avatar Editor can be used to customize your existing avatar and create new ones.",
   "samples": [],
   "dependencies": {
-    "com.genies.avatar-sdk.client": "3.8.2",
+    "com.genies.avatar-sdk.client": "3.8.4",
     "com.unity.cinemachine": "3.1.5"
   }
 }

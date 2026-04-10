@@ -70,6 +70,11 @@ namespace Genies.Sdk.AvatarEditor.Core
                 return;
             }
 
+            if (IsEditorOpen)
+            {
+                return;
+            }
+
             if (_editorOpenedSource != null)
             {
                 await _editorOpenedSource.Task;

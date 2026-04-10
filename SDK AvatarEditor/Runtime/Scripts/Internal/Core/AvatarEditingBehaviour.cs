@@ -292,8 +292,12 @@ namespace Genies.Sdk.AvatarEditor.Core
 
             if (_currentCustomizedAvatar is not null && revertAvatar)
             {
-                // Revert to the last saved definition instead of the original definition
-                await _currentCustomizedAvatar.SetDefinitionAsync(_lastSavedDefinition);
+                // Only revert if the current definition differs from the last saved state.
+                var currentDefinition = _currentCustomizedAvatar.GetDefinition();
+                if (currentDefinition != _lastSavedDefinition)
+                {
+                    await _currentCustomizedAvatar.SetDefinitionAsync(_lastSavedDefinition);
+                }
             }
         }
 
