@@ -7,7 +7,7 @@ While this package is publicly available for use, we will not be updating it as 
 ## Requirements
 
 - Unity **2022.3** LTS (2022.3.32f1 or later) or Unity 6
-- [Genies Avatar SDK](https://assetstore.unity.com/packages/tools/game-toolkits/genies-avatar-sdk-336166?srsltid=AfmBOoq0n2Mqua3R8zaDscD2qRxoSjsYJE8FTPJqu8Qt53ZuHKq7JSfO) (`com.genies.avatar-sdk.client` v3.8.2+)
+- [Genies Avatar SDK](https://assetstore.unity.com/packages/tools/game-toolkits/genies-avatar-sdk-336166?srsltid=AfmBOoq0n2Mqua3R8zaDscD2qRxoSjsYJE8FTPJqu8Qt53ZuHKq7JSfO) (`com.genies.avatar-sdk.client` v3.8.4+)
 
 ## Installation
 
